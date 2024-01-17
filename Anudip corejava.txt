@@ -144,3 +144,16 @@ public class Third
 -------------------------------------------------------------------------------------------------------
 //wap to find out the square and cube of a number
 --------------------------------------------------------------------------------------------
+program-7
+---------------------------------------------------------
+package org.wednesday;
+
+public class Third 
+{
+	public static void main(String[] args) 
+	{
+		int a=10;
+		System.out.println("the square of the number is "+(a*a));
+		System.out.println("the cube of the number is "+(a*a*a));
+							}
+}
