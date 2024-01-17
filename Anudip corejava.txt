@@ -110,3 +110,19 @@ public class Third
 			}
 }
 --------------------------------------------------------------------------------------------
+program-5
+----------------
+package org.wednesday;
+
+public class Third 
+{
+	public static void main(String[] args) 
+	{
+		int a=10,b=20,c=a+b;
+		System.out.println("the sum is "+c);
+		
+			}
+}
+---------------------------------------------------------------------------
+//wap to find the sum and average of 5 numbers.
+---------------------------------------------------------------------------
