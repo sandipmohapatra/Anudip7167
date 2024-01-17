@@ -1,0 +1,81 @@
+Java 1.8 features
+--------------------------
+1)Java is Object Oriented programming Language.
+2)Java is simpler then c and c++ as we don't have pointer concept,Multiple Inheritance,operator overloading.
+3)Java supports multi-threading or multi-tasking.
+4)We can develop web-application,network application,standalone application and also mobile application.
+5)In java we interface which support the concept of multiple inheritance.
+6)In java we have constructor but no destructor.There is automatic garbage clearance.
+7)java is secured language.we have 4 access specifier private,public,protected,default.
+
+------------------------------------------
+Data types
+---------------------------------------------------------
+primative datatype
+-------------------------
+1)byte - 1 byte
+2)short - 2 bytes
+3)int - 4 bytes
+4)long - 8 bytes
+5)char - 2 bytes
+6)boolen - 1 bit
+7)float - 4 bytes
+8)double - 8 bytes
+-----------------------------------------
+derived datatype
+----------------------------
+1)String
+2)array
+----------------------------------------
+Operator
+-------------------
+1)unary :-i++,++i,i--,--i
+
+2)binary :-
+i)arithmatic :- +,-,*,/,%(modules)
+ii)comparative :- <,>,<=,>=
+iii)assignment :- =,!=
+iv)bitwise :- >>,<<
+3)ternary :- :,?
+--------------------------------------
+we have 4 access specifier private,public,protected,default.
+
+1)private :- if we declare variable and methods as private we can access it within the class only.
+2)public :- if we declare variable and methods as public we can access it within the class,outside the class and also outside the package.
+3)protected :- if we declare variable and methods as protected we can access it within the class and also outside the child class.
+4)default :- if we declare variable and methods as default we can access it within the class ,out side the class but not outside the package.
+------------------------------------------------------------------------------------------------------------------------
+program-1
+----------------
+package monday;
+
+public class First
+{
+public static void main(String[] args) 
+{
+System.out.println("Welcome to JDK1.8");	
+}
+}
+-------------------------------------------------
+program-2
+----------------------
+package monday;
+
+public class First
+{
+public static void main(String[] args) 
+{
+byte a=10;
+short b=20;
+int c=30;
+long d=40;
+float e=5.6f;
+double f=6.7;
+String g="apple";
+char h='a';
+System.out.println(a+" "+b+" "+c);
+System.out.println(d+" "+e+" "+f);
+System.out.println(g+" "+h);
+}
+}
+----------------------------------------------------------------
