@@ -24,7 +24,7 @@ primative datatype
 -----------------------------------------
 derived datatype
 ----------------------------
-1)String
+1)String-"apple","Bangalore"
 2)array
 ----------------------------------------
 Operator
@@ -46,6 +46,20 @@ we have 4 access specifier private,public,protected,default.
 4)default :- if we declare variable and methods as default we can access it within the class ,out side the class but not outside the package.
 ------------------------------------------------------------------------------------------------------------------------
 program-1
+--------------------
+package org.wednesday;
+
+public class First 
+{
+public static void main(String[] args) 
+{
+System.out.println("welcome to java at Anudip");	
+System.out.println("My Batch code is : ANP-C7167");	
+System.out.println("My Course Code is : AJP");	
+}
+}
+---------------------------------------------------------------------------------------------
+program-2
 ----------------
 package monday;
 
@@ -57,7 +71,7 @@ System.out.println("Welcome to JDK1.8");
 }
 }
 -------------------------------------------------
-program-2
+program-3
 ----------------------
 package monday;
 
@@ -79,3 +93,20 @@ System.out.println(g+" "+h);
 }
 }
 ----------------------------------------------------------------
+program-4
+--------------------
+package org.wednesday;
+
+public class Third 
+{
+	public static void main(String[] args) 
+	{
+		int rollno=10;
+		String name="Sandip";
+		String address="Bangalore";
+		System.out.println("the rollno is "+rollno);
+		System.out.println("the name is "+name);
+		System.out.println("the address is "+address);
+			}
+}
+--------------------------------------------------------------------------------------------
