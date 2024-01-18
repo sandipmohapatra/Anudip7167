@@ -196,8 +196,8 @@ System.out.println("the sum is "+c);
 program-8
 -----------------------------
 package monday;
-import java.lang.*;
-import java.util.*;
+import java.lang.*;//it is a default package
+import java.util.*;//scanner class
 public class First
 {
 int empno;
@@ -222,6 +222,11 @@ public static void main(String[] args) {
 	obj.display();
 }
 }
+------------------------------------------
+Object Oriented Programming concept
+---------------------------------------------------------------
+Class:- It is a collection of variables and methods.
+Objects:-It is a reference pointer by which we can access the variables and methods of a class.
 
 ----------------------------------------------------------------------------------
 Question-1
@@ -496,8 +501,10 @@ public static void main(String[] args)
 }
 
 ---------------------------------------------------------------------------------------------
-Class
-Objects
+Object Oriented Programming concept
+---------------------------------------------------------------
+Class:- It is a collection of variables and methods.
+Objects:-It is a reference pointer by which we can access the variables and methods of a class.
 Data Abstraction
 Encapsulation
 Inheritance
