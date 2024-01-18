@@ -229,6 +229,35 @@ Class:- It is a collection of variables and methods.
 Objects:-It is a reference pointer by which we can access the variables and methods of a class.
 
 ----------------------------------------------------------------------------------
+//class contains variables and methods
+package org.Thursday;
+import java.util.*;
+public class Student 
+{
+int rollno;
+String name,address;
+void input()
+{
+	Scanner ob=new Scanner(System.in);
+	System.out.println("enter rollno,name and address");
+	rollno=ob.nextInt();
+	name=ob.next();
+	address=ob.next();
+}
+void display()
+{
+	System.out.println("the rollno  is"+rollno);
+	System.out.println("the name  is"+name);
+	System.out.println("the address  is"+address);
+	
+}
+public static void main(String[] args) {
+	Student  obj=new Student();
+	obj.input();
+	obj.display();
+}
+}
+----------------------------------------------------------------------------------------------
 Question-1
 wap to enter a student data and display it.
 rollno,name,physics,chem,maths marks.
