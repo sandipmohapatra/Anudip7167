@@ -175,6 +175,23 @@ int c=a+b;
 System.out.println("the sum is "+c);
 }
 }
+---------------------------------------------------------
+//taking input at runtime
+package org.Thursday;
+import java.util.*;  //this a predefined package for scanner class 
+public class Second 
+{
+public static void main(String[] args) 
+{
+Scanner ob=new Scanner(System.in);//System.in:-This is used to take input from the keyboard
+System.out.println("enter two numbers");//System.out :- This is used to display message .
+float a=ob.nextFloat();
+float b=ob.nextFloat();
+float c=a+b;
+System.out.println("the sum is "+c);
+}
+}
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 program-8
 -----------------------------
