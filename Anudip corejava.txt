@@ -538,3 +538,39 @@ Data Abstraction
 Encapsulation
 Inheritance
 Polymorphism
+
+-----------------------------------------------------------
+package org.Friday;
+import java.lang.*;
+import java.util.*;
+public class First
+{
+public static void main(String[] args) 
+{
+System.out.println("Enter two numbers");	
+Scanner ob=new Scanner(System.in);
+int a=ob.nextInt();
+int b=ob.nextInt();
+if(a>b)
+	System.out.println("the greatest is "+a);
+else
+	System.out.println("the greatest is "+b);
+}
+}
+----------------------------------------------------------------------------------
+package org.Friday;
+public class MaxBetweenTwoNumbers
+{
+    public static void main(String[] args) 
+    {
+        
+        int num1=10,num2=30;
+        
+        int max = (num1 > num2) ? num1 : num2;
+        
+        System.out.println("The maximum between " + num1 + " and " + num2 + " is: " + max);
+      
+ 
+    }
+}
+--------------------------------------------------------------------------------------------
