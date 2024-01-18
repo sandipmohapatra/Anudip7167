@@ -574,3 +574,53 @@ public class MaxBetweenTwoNumbers
     }
 }
 --------------------------------------------------------------------------------------------
+create a bank class.
+enter accno,name,balance=5000.
+create 2 methods withdraw() and deposite().
+if(balance <withdraw)display we cannot withdraw.
+else balace=balance-withdraw.
+deposite balance =balance+deposite
+-----------------------------------------------------------------------------------------------
+package org.Friday;
+import java.util.*;
+public class Bank 
+{
+	int accno;
+	String name;
+	float balance=5000f;
+	Scanner ob=new Scanner(System.in);
+	void withdraw()
+	{
+		System.out.println("enter accno and name and withdraw amount");
+		accno=ob.nextInt();
+		name=ob.next();
+		float withdraw=ob.nextFloat();
+		if(balance<withdraw )
+			System.out.println("sorry balace is low");
+		else
+			System.out.println("the avaiable balance is "+(balance-withdraw));
+	}
+	void deposite()
+	{
+			System.out.println("enter accno and name and deposite amount");
+		accno=ob.nextInt();
+		name=ob.next();
+		float deposite=ob.nextFloat();
+		System.out.println("the avaiable balance is "+(balance+deposite));
+	}
+	public static void main(String[] args) 
+	{
+		Bank obj=new Bank();
+		Scanner ob=new Scanner(System.in);
+	System.out.println("Do you want to deposite or withdraw");
+	String opp=ob.next();
+	if(opp.equals("deposite"))
+			obj.deposite();
+		else
+	obj.withdraw();
+		}
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+
