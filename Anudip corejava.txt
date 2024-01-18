@@ -1,3 +1,5 @@
+Day-1
+-----------------------------------
 Java 1.8 features
 --------------------------
 1)Java is Object Oriented programming Language.
@@ -157,3 +159,307 @@ public class Third
 		System.out.println("the cube of the number is "+(a*a*a));
 							}
 }
+---------------------------------------Day-2-----------------------------------------
+program-8
+-----------------------------
+package monday;
+import java.lang.*;
+import java.util.*;
+public class First
+{
+int empno;
+String name,address;
+void input()
+{
+	Scanner ob=new Scanner(System.in);
+	System.out.println("enter empno,name,address");
+	empno=ob.nextInt();
+	name=ob.next();
+	address=ob.next();
+}
+void display()
+{
+System.out.println("the empno is "+empno);	
+System.out.println("the emp name  is "+name);	
+System.out.println("the emp address is "+address);	
+}
+public static void main(String[] args) {
+	First obj=new First();
+	obj.input();
+	obj.display();
+}
+}
+
+----------------------------------------------------------------------------------
+Question-1
+wap to enter a student data and display it.
+rollno,name,physics,chem,maths marks.
+-------------------------------------------------------------------------
+Program-9
+---------------------
+package monday;
+import java.lang.*;
+import java.util.*;
+public class First
+{
+int rollno;
+String name,address;
+float phy,chem,math,total;
+void input()
+{
+	Scanner ob=new Scanner(System.in);
+	System.out.println("enter rollno,name,address,phy,chem,math");
+	rollno=ob.nextInt();
+	name=ob.next();
+	address=ob.next();
+	phy=ob.nextFloat();
+	chem=ob.nextFloat();
+	math=ob.nextFloat();
+}
+void display()
+{
+System.out.println("the rollnono is "+rollno);	
+System.out.println("the name  is "+name);	
+System.out.println("the address is "+address);	
+System.out.println("phy"+phy+" chem"+chem+"math"+math);
+System.out.println("the total is "+(phy+chem+math));
+}
+public static void main(String[] args) {
+	First obj=new First();
+	obj.input();
+	obj.display();
+}
+}
+
+----------------------------------------------------------------------------------------------------
+Constructor
+-----------------------------
+A constructor is a method which has the same name as that of the class name.
+It doesnot return any value.it doesnot have any return type.
+There are 2 types of constructor
+1)default constructor :- it is without any parameter.
+2)parameterized constructor :- it is with parameter.
+To access a constructor we require an object.
+-----------------------------------------------------
+program-10
+--------------------
+package monday;
+import java.util.*;
+class first
+{
+int rollno;//intance variable
+String name,address;
+first()
+{
+	System.out.println("this is a default constructor which is without any parameter");
+}
+first(int rollno,String name,String address)//local variable
+{
+	this.rollno=rollno;//to differenciate between intance variable and local variable we use this
+	this.name=name;//keyword.
+	this.address=address;
+}
+void display()
+{
+	System.out.println("the rollno is "+rollno);
+	System.out.println("the name is "+name);
+	System.out.println("the address is "+address);
+	}
+}
+class second
+{
+public static void main(String[] args) {
+	first ob=new first();
+	first ob1=new first(101,"ajay","bangalore");
+	first ob2=new first(102,"trupti","orissa");
+	ob1.display();ob2.display();
+}
+}
+-------------------------------------------------------------
+Difference between constructor and a method.
+-----------------------------------------------------------------
+1)a method can have any name but a constructor will have only the class name .
+2)a method returns a value but constructor doesnot return any value.
+----------------------
+program-11
+---------------------
+package monday;
+import java.util.*;
+class first
+{
+int rollno;//intance variable
+String name,address;
+first()
+{
+	System.out.println("this is a default constructor which is without any parameter");
+}
+first(int rollno,String name,String address)//local variable
+{
+	this.rollno=rollno;//to differenciate between intance variable and local variable we use this
+	this.name=name;//keyword.
+	this.address=address;
+}
+void display()
+{
+	System.out.println("the rollno is "+rollno);
+	System.out.println("the name is "+name);
+	System.out.println("the address is "+address);
+	}
+int sum(int a,int b) //method overloading
+{
+	return a+b;
+}
+float sum(float a,float b)
+{
+	return a+b;
+}
+}
+class second
+{
+public static void main(String[] args) {
+	first ob=new first();
+	first ob1=new first(101,"ajay","bangalore");
+	first ob2=new first(102,"trupti","orissa");
+	ob1.display();ob2.display();
+	System.out.println(ob1.sum(6, 6));//compiler will decide where to send the value
+	System.out.println(ob1.sum(6.5f, 6.3f));
+	
+}
+}
+-----------------------------------------------------------------------
+Question-2
+wap to create a parameterized constractor .pass the values and display it.
+employee :- empno,name,designation,salary.
+-------------------------------------------------------------------------------------------------------------
+program-12
+---------------------
+package monday;
+import java.util.*;
+class first1
+{
+int empno;//intance variable
+String name,address;
+first1()
+{
+	System.out.println("this is a default constructor which is without any parameter");
+}
+first1(int rollno,String name,String address)//local variable
+{
+	this.empno=rollno;
+	this.name=name;
+	this.address=address;
+}
+void display()
+{
+	System.out.println("the rollno is "+empno);
+	System.out.println("the name is "+name);
+	System.out.println("the address is "+address);
+	}
+
+}
+class second2
+{
+public static void main(String[] args) {
+	first1 ob=new first1();
+	first1 ob1=new first1(101,"ajay","bangalore");
+	first1 ob2=new first1(102,"trupti","orissa");
+	ob1.display();ob2.display();
+	
+}
+}
+------------------------------------------------------------------------------------
+setter() is used to set the values
+getter() is used to get the values
+-----------------------------------------------------------------
+program-13
+-----------------------
+package monday;
+
+public class Employee 
+{
+int empno;
+String name,designation;
+float salary;
+//right click >source >generate getter and setter
+public int getEmpno() {
+	return empno;
+}
+public void setEmpno(int empno) {
+	this.empno = empno;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public String getDesignation() {
+	return designation;
+}
+public void setDesignation(String designation) {
+	this.designation = designation;
+}
+public float getSalary() {
+	return salary;
+}
+public void setSalary(float salary) {
+	this.salary = salary;
+}
+
+
+}
+------------------------------------------------------------
+package Wednesday;
+
+public class Student 
+{
+int rollno;
+String name,email;
+public int getRollno() {
+	return rollno;
+}
+public void setRollno(int rollno) {
+	this.rollno = rollno;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public String getEmail() {
+	return email;
+}
+public void setEmail(String email) {
+	this.email = email;
+}
+
+}
+--------------------------------------------------------------------------
+package Tuesday;
+import Wednesday.Student;
+import monday.Employee;
+public class Test 
+{
+public static void main(String[] args)
+{
+	Employee ob=new Employee();
+	ob.setEmpno(101);
+	ob.setName("Trupti");
+	ob.setDesignation("software eng");
+	ob.setSalary(45000.50f);
+	System.out.println(ob.getEmpno());
+	System.out.println(ob.getName());
+	System.out.println(ob.getSalary());
+	System.out.println(ob.getDesignation());
+	Student ob1=new Student();
+	ob1.setRollno(102);
+	ob1.setName("Madhu");
+	ob1.setEmail("Madhu@gmail.com");
+	System.out.println(ob1.getRollno());
+	System.out.println(ob1.getName());
+	System.out.println(ob1.getEmail());
+}
+}
+
+---------------------------------------------------------------------------------------------
