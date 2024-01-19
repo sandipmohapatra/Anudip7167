@@ -622,5 +622,32 @@ public class Bank
 }
 
 -------------------------------------------------------------------------------------------------------------------------------------------
+package org.Friday;
 
+public class ContructorDemo 
+{
+int rollno;
+String name,address;
+public ContructorDemo(int rollno, String name, String address) 
+{
+	super();
+	this.rollno = rollno;
+	this.name = name;
+	this.address = address;
+}
+void display()
+{
+	System.out.println("the rollno is "+rollno);
+	System.out.println("the name is "+name);
+	System.out.println("the address is "+address);
+}
+public static void main(String[] args) 
+{
+	ContructorDemo ob1=new ContructorDemo(101, "sandip", "Hydrabad");
+	ContructorDemo ob2=new ContructorDemo(102, "kiran", "Hydrabad");
+	ob1.display();
+	ob2.display();
+	}
+}
+------------------------------------------------------------------------------------------
 
