@@ -690,3 +690,60 @@ public static void main(String[] args)
 constructor means memory blocks are constructed.
 destructor means memory blockas are deleted.In java it is automatic.kown as garbage collection.
 -------------------------------------------------------------------------------------------
+//wap to create contructor for an employee class.
+having empid,name,location,salary and display it.
+--------------------------------------------------------------------------------
+package org.Friday;
+
+public class GetterDemo 
+{
+private int rollno;
+private String name,address;
+private float salary;
+public int getRollno() {
+	return rollno;
+}
+public void setRollno(int rollno) {
+	this.rollno = rollno;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public String getAddress() {
+	return address;
+}
+public void setAddress(String address) {
+	this.address = address;
+}
+public float getSalary() {
+	return salary;
+}
+public void setSalary(float salary) {
+	this.salary = salary;
+}
+}
+-------------------------------------------------------------------------------------------------------
+package org.Friday;
+
+public class Mainclass 
+{
+public static void main(String[] args) 
+{
+	GetterDemo ob=new GetterDemo();
+ob.setRollno(101);
+ob.setName("sandip");
+ob.setAddress("Bangalore");
+ob.setSalary(10000);
+System.out.println("the rollno is "+ob.getRollno());
+System.out.println("the name is "+ob.getName());
+System.out.println("the address is "+ob.getAddress());
+System.out.println("the salary is "+ob.getSalary());
+}
+}
+---------------------------------------------------------------------------
+
+
+
