@@ -307,6 +307,9 @@ There are 2 types of constructor
 1)default constructor :- it is without any parameter.
 2)parameterized constructor :- it is with parameter.
 To access a constructor we require an object.
+The constructor is executed first .It is used to construct memory block.
+Garbage collector is used  to remove the memory blocks which are not in use.
+*There is no destructor in java.
 -----------------------------------------------------
 program-10
 --------------------
