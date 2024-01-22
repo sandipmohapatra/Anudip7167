@@ -816,5 +816,39 @@ System.out.println("the sum is "+ob.sum(19, 20));
 }
 }
 ---------------------------------------------------------------------------------------------
+//wap to create a employee class
+empid,name,location,salary
+enter the data using setter and constructor  and display it.
+-----------------------------------------------------------------------------------------------------------
+package org.tuesday;
+import java.util.*;
+public class First 
+{
+public static void main(String[] args) 
+{
+	Scanner ob=new Scanner(System.in);
+	int a[]=new int[5];
+	
+	System.out.println("enter 5 nos");
+	for(int i=0;i<5;i++)
+		a[i]=ob.nextInt();
+	
+	System.out.println("5 nos are");
+	for(int i=0;i<5;i++)
+		System.out.println(a[i]);
+	
+}
+}
+----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
 
 
