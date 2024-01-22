@@ -840,8 +840,27 @@ public static void main(String[] args)
 }
 }
 ----------------------------------------------------------------------------
+//wap to enter 5 nos and find the sum
+---------------------------------------------------------------------------
+year is leap or not
+------------------------------
+package org.tuesday;
+public class CheckLeapYear {
 
-
+	public static void main(String[] args) 
+	{
+		int year=2024;
+	    if(((year % 4 == 0) && (year % 100 !=0)) || (year % 400==0))
+	    {
+	        System.out.println("LEAP YEAR");
+	    }
+	    else
+	    {
+	    	 System.out.println("COMMON YEAR");
+	    }
+	}
+}
+--------------------------------------------------------------------------------------------------------------
 
 
 
