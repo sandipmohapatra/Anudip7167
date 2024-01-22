@@ -744,6 +744,74 @@ System.out.println("the salary is "+ob.getSalary());
 }
 }
 ---------------------------------------------------------------------------
+//wap to enter bank data and display it
+accno,name,balance using getter and setter
+---------------------------------------------------------------------------
+example--3
+------------------
+package org.monday;
+public class First 
+{
+private int rollno;
+private String name,address;
 
+int sum(int a,int b) //function having return type int and return statement.
+{
+	return a+b;
+}
+
+public First() {
+	System.out.println("This is default parameter");
+}
+
+public First(int rollno, String name, String address) 
+{
+	super();
+	this.rollno = rollno;
+	this.name = name;
+	this.address = address;
+	System.out.println("the rollno is"+rollno);
+	System.out.println("the name is"+name);
+	System.out.println("the address is"+address);
+}
+public int getRollno() {
+	return rollno;
+}
+public void setRollno(int rollno) {
+	this.rollno = rollno;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public String getAddress() {
+	return address;
+}
+public void setAddress(String address) {
+	this.address = address;
+}
+
+}
+----------------------------------------------------------------------
+package org.monday;
+
+public class Second
+{
+public static void main(String[] args) 
+{
+First ob=new First(101,"sandip","Bangalore");
+First ob1=new First();
+ob.setRollno(102);
+ob.setName("Sandip");
+ob.setAddress("Bangalore");
+System.out.println("the rollno is "+ob.getRollno());
+System.out.println("the name is "+ob.getName());
+System.out.println("The address is "+ob.getAddress());
+System.out.println("the sum is "+ob.sum(19, 20));
+}
+}
+---------------------------------------------------------------------------------------------
 
 
