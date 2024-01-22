@@ -861,6 +861,73 @@ public class CheckLeapYear {
 	}
 }
 --------------------------------------------------------------------------------------------------------------
+145---it is a strong number or not
+
+factorial of each number and it sum should be equal to 145
+
+
+1+(4*3*2*1)+(5*4*3*2*1)
+1+24+120=145
+------------------------------------------------------------------------------------------
+
+package org.tuesday;
+
+import java.util.Scanner;
+
+public class StrongNumber {
+
+	static void  calculateStrongNumber(int num)
+	{
+	int rem,sum=0,temp;
+	temp=num;                          //temp=145
+	while(num>0)
+	{
+		
+		rem=num%10;         //145%10=5 //14%10=4//1%10=1
+		//invoke factorial() 
+		int f=factorial(rem);
+		sum+=f;   
+		num=num/10;          //145/10=14  //14/10=1//
+	}
+	
+	if(sum==temp)
+	{
+	System.out.println(temp+" is a strong number");
+	}
+	else
+		System.out.println(temp+" is not a strong number");
+
+	}
+	
+	static int factorial(int n)
+	{
+		int fact=1;
+		for(int i=1;i<=n;i++)
+		{
+		fact*=i; //fact=fact*i
+		}
+       return fact;
+	}
+	
+	public static void main(String[] args) {
+		calculateStrongNumber(145);
+
+	}
+
+}
+-----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
