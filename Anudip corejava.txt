@@ -1032,7 +1032,69 @@ public class Salary extends Employee
 	}
 }
 ----------------------------------------------------------------------------------------------------------------
+is-a relationship (Inheritance)
+has-a relationship (aggregation)
+--------------------------------------------------
+employee has a salary
+house has a kitchen
+employee has a bankaccount
+------------------------------------------------------------------
+has-a relationship example
+-------------------------------------------
+package org.sandip1;
 
+public class Employee 
+{
+int empno;
+String name,address;
+Bank bank;
+
+public Employee(int empno, String name, String address, Bank bank) 
+{
+	super();
+	this.empno = empno;
+	this.name = name;
+	this.address = address;
+	this.bank = bank;
+}
+
+void display()
+{
+	System.out.println("the empno is "+empno);
+	System.out.println("the name is "+name);
+	System.out.println("the address is "+address);
+	System.out.println("the bank details is "+bank);
+	}
+
+public static void main(String[] args) 
+{
+	Bank ob1=new Bank(1002123,"SBI Bank","MG Road");
+Employee ob2=new Employee(101,"Sandip","bangalore",ob1);	
+ob2.display();
+}
+}
+---------------------------------------------------------------------------------
+
+//toString() :- it is used to convert the object to string format. 
+package org.sandip1;
+
+public class Bank 
+{
+int accno;
+String bankname,loc;
+public Bank(int accno, String bankname, String loc)
+{
+	super();
+	this.accno = accno;
+	this.bankname = bankname;
+	this.loc = loc;
+}
+@Override
+public String toString() {
+	return "Bank [accno=" + accno + ", bankname=" + bankname + ", loc=" + loc + "]";
+}
+}
+--------------------------------------------------------------------------------------------------------
 
 
 
