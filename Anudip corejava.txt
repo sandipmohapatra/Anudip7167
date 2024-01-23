@@ -983,7 +983,55 @@ empno,name,address
 create a salary class extending the employee class
 salary,pf,designation
 -----------------------------------------------------------------------------------------
+example-1
+---------------------
+package org.sandip1;
 
+public class Employee {
+int empno;
+String name,address;
+public Employee(int empno, String name, String address) 
+{
+	this.empno = empno;
+	this.name = name;
+	this.address = address;
+}
+void display()
+{
+	System.out.println("the empno is "+empno);
+	System.out.println("the name is "+name);
+	System.out.println("the address is "+address);
+	}
+
+}
+-------------------------------------------------------------------------------------
+package org.sandip1;
+
+public class Salary extends Employee
+{
+	float salary,pf;
+	String designation;
+	public Salary(int empno, String name, String address, float salary, float pf, String designation) 
+	{
+		super(empno, name, address);
+		this.salary = salary;
+		this.pf = pf;
+		this.designation = designation;
+	}
+	void display()
+	{
+		super.display();
+		System.out.println("The salary is "+salary);
+		System.out.println("The PF is "+pf);
+		System.out.println("The designation is "+designation);
+			}
+	public static void main(String[] args) 
+	{
+		Salary ob=new Salary(101,"sandip","Bangalore",45000.45f,1750.45f,"Worker");
+		ob.display();
+	}
+}
+----------------------------------------------------------------------------------------------------------------
 
 
 
