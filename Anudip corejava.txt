@@ -539,8 +539,15 @@ Class:- It is a collection of variables and methods.
 Objects:-It is a reference pointer by which we can access the variables and methods of a class.
 Data Abstraction
 Encapsulation
-Inheritance
-Polymorphism
+Inheritance:-It is used to reuse the existing code.Java support single,multi-level,hirarcal inheritance.we use the keyword super to access the super class and we use the extends keyword to inherite the super class.
+Polymorphism:- poly means many and morphism means forms.
+function overloading
+int sum(int a,int b);
+float sum(float a,float b);
+double sum(double a,double b);
+--------------------------------------------------------------------------------
+
+function overriding.
 
 -----------------------------------------------------------
 package org.Friday;
@@ -1084,7 +1091,6 @@ int accno;
 String bankname,loc;
 public Bank(int accno, String bankname, String loc)
 {
-	super();
 	this.accno = accno;
 	this.bankname = bankname;
 	this.loc = loc;
