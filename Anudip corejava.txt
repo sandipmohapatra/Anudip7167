@@ -916,9 +916,68 @@ public class StrongNumber {
 
 }
 -----------------------------------------------------------------------------------------------
-
-
-
+Day-4
+---------------
+Inheritance:- It is reuse of existing code.iphone6,iphone7,iphone14.
+They don't develop the code from the begining.They use the previous code+new modification is added.
+java support single inheritance,multi-level inheritance,hirarcal inheritance.
+we use the keyword extends for inheriting the parent class.
+we use the keyword super to access the parent class variables and methods into the child class.
+-------------------------------------------------
+single Inheritance
+-------------------------------------
+//class contains variables and methods
+//object is a reference pointer by which we can access the variables and methods of a class.
+package org.sandip;
+import java.util.*;  //this a predefined package for scanner class 
+class Student //parent class
+{
+int rollno;//variables
+String name,address;
+void input()//user defined methods
+{
+	Scanner ob=new Scanner(System.in);
+	System.out.println("enter rollno,name,address");
+	rollno=ob.nextInt();
+	name=ob.next();
+	address=ob.next();
+}
+void display()
+{
+	System.out.println("the rollno is "+rollno);
+	System.out.println("the name is "+name);
+	System.out.println("the address is "+address);
+	}
+}
+public class Second extends Student   //child class inheriting the parent class
+{
+	int phy,chem,bio,sum;
+	void input()
+	{
+		super.input();//parent class input
+		Scanner ob=new Scanner(System.in);
+		System.out.println("enter physics,chemistry,biology marks");
+		phy=ob.nextInt();
+		chem=ob.nextInt();
+		bio=ob.nextInt();
+		sum=phy+chem+bio;
+		}
+	void display()
+	{
+		super.display();//parent class display
+		System.out.println("the physics marks is "+phy);
+		System.out.println("the chemistry marks is "+chem);
+		System.out.println("the biology marks is "+bio);
+		System.out.println("the total marks is "+sum);
+			}
+	public static void main(String[] args)
+ {
+		Second ob=new Second();//in inheritance we create object for the child class.
+		ob.input();
+		ob.display();
+	}
+}
+----------------------------------------------------------------------------------------------------------------------
 
 
 
