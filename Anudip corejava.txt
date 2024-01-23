@@ -978,7 +978,11 @@ public class Second extends Student   //child class inheriting the parent class
 	}
 }
 ----------------------------------------------------------------------------------------------------------------------
-
+create a employee class
+empno,name,address
+create a salary class extending the employee class
+salary,pf,designation
+-----------------------------------------------------------------------------------------
 
 
 
