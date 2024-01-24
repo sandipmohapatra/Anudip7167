@@ -567,7 +567,7 @@ else
 	System.out.println("the greatest is "+b);
 }
 }
-----------------------------------------------------------------------------------
+----------------------------------------------Lab answer------------------------------------
 package org.Friday;
 public class MaxBetweenTwoNumbers
 {
@@ -848,7 +848,7 @@ public static void main(String[] args)
 }
 ----------------------------------------------------------------------------
 //wap to enter 5 nos and find the sum
----------------------------------------------------------------------------
+-----------------------------------Lab Answer----------------------------------------
 year is leap or not
 ------------------------------
 package org.tuesday;
@@ -867,7 +867,7 @@ public class CheckLeapYear {
 	    }
 	}
 }
---------------------------------------------------------------------------------------------------------------
+----------------------------------------------------Lab Answer----------------------------------------------------------
 145---it is a strong number or not
 
 factorial of each number and it sum should be equal to 145
@@ -1101,11 +1101,176 @@ public String toString() {
 }
 }
 --------------------------------------------------------------------------------------------------------
+Polymorphism:- poly means many and morphism means forms.
+function overloading :- same function doing multiple work.Like adding int,float,double.
+int sum(int a,int b);
+float sum(float a,float b);
+double sum(double a,double b);
+--------------------------------------------------------------------------------
 
+function overriding.
 
+example-1
+-------------------
+package org.wednesday;
 
+public class OverloadingDemo 
+{
+	int sum(int a,int b)
+	{
+		return a+b;
+		}
+	float sum(float a,float b)
+	{
+		return a+b;
+	}
+	double sum(double a,double b)
+	{
+		return a+b;
+	}
+public static void main(String[] args) {
+	OverloadingDemo ob=new OverloadingDemo();
+	System.out.println("the sum is"+ob.sum(5,6));
+	System.out.println("the sum is"+ob.sum(5.4,6.3));
+	System.out.println("the sum is"+ob.sum(5.34f,6.43f));
+}
+}
+-------------------------------------------------------------------------------------------------------
+function overridding
+--------------------------------
+In this the parent class function will be overridden in the child class.So that the child class function can be used .
+It is used in abstract class and interface.
+example 1
+------------------
+Bank project
+-----------------------
+1)account opening();
+2)deposite();
+3)withdraw();
+4)loan();
+-------------------------------------
 
+package org.wednesday;
 
+abstract class Bank
+{
+	abstract void accountopening();
+	abstract void deposite();
+	abstract void withdraw();
+	abstract void loan();
+	void balancecheck()
+	{
+		System.out.println("the balanace is displayed after withdraw or deposite");
+	}
+}
+
+public class AbstractDemo extends Bank
+{
+
+	@Override
+	void accountopening() {
+		
+		System.out.println("account opening statement");
+	}
+
+	@Override
+	void deposite() {
+	
+		System.out.println("deposite function");
+	}
+
+	@Override
+	void withdraw() {
+		
+		System.out.println("withdraw function");
+	}
+
+	@Override
+	void loan() {
+		
+		System.out.println("loan statement");
+	}
+public static void main(String[] args) {
+	AbstractDemo ob=new AbstractDemo();
+	ob.accountopening();
+	ob.deposite();
+	ob.withdraw();
+	ob.loan();
+	ob.balancecheck();
+}
+}
+------------------------------------------------------
+Abstract class:- 
+1)It is an incomplete class.
+2)It contains incomplete methods and concret methods.
+3)we cannot create objects of the abstract class.
+4)we have to override the abstract methods in the child class and create object of the child class.
+------------------------------------------------------------------------------
+example-2
+-------------------
+package org.wednesday;
+
+class Hillstations {
+	  void location(){
+		  System.out.println("Location is:");
+		  }  
+		  void famousfor(){
+		  System.out.println("Famous for:");
+		  }  
+
+		  }  
+		  class Manali extends Hillstations {  
+		    void location(){
+		  System.out.println("Manali is in Himachal Pradesh");
+		  }  
+		  void famousfor(){
+		  System.out.println("It is Famous for Hadimba Temple and adventure sports");
+		  }  
+		    }
+		  
+		  class Mussoorie extends Hillstations {  
+		    void location(){
+		  System.out.println("Mussoorie is in Uttarakhand");
+		  }  
+		  void famousfor(){
+		  System.out.println("It is Famous for education institutions");
+		  }  
+		    }
+		  
+		  class Gulmarg extends Hillstations {  
+		    void location(){
+		  System.out.println("Gulmarg is in J&K");
+		  }  
+		  void famousfor(){
+		  System.out.println("It is Famous for skiing");
+		  }  
+		    }
+		  
+		  class AbstractionEx
+		  {
+		    public static void main(String args[])
+		    { 
+		    	Hillstations A = new Hillstations();
+		    	Hillstations M = new Manali();
+
+		    	Hillstations Mu = new Mussoorie();
+
+		    	Hillstations G = new Gulmarg();
+
+		      A.location();
+		  A.famousfor();
+
+		  M.location();
+		  M.famousfor();
+
+		  Mu.location();
+		  Mu.famousfor();
+
+		  G.location();
+		  G.famousfor();
+		    }  
+}
+-------------------------------------------------------------------------------
 
 
 
