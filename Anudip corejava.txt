@@ -1140,6 +1140,7 @@ function overridding
 --------------------------------
 In this the parent class function will be overridden in the child class.So that the child class function can be used .
 It is used in abstract class and interface.
+all the details of the function should be same.
 example 1
 ------------------
 Bank project
@@ -1271,7 +1272,44 @@ class Hillstations {
 		    }  
 }
 -------------------------------------------------------------------------------
+example-3
+---------------------
+package org.wednesday;
 
+class Animall {
+public void makeSound() {
+    System.out.println("The animal makes a sound.");
+}
+}
+//Cat.java
+class Catt extends Animall {
+@Override
+public void makeSound() {
+    System.out.println("The Cat meows");
+}
+}
+
+//Cat.java
+class Dogg extends Animall {
+@Override
+public void makeSound() {
+  System.out.println("The dog barks");
+}
+}
+public class Assignment2 {
+
+	public static void main(String[] args) {
+		 Animall animal = new Animall();
+	        Catt cat = new Catt();
+	        Dogg dog = new Dogg();
+	        animal.makeSound();
+	        cat.makeSound();
+	        dog.makeSound();
+	}
+
+}
+
+-----------------------------------------------------------------------------------
 
 
 
