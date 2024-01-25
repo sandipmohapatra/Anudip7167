@@ -1483,8 +1483,31 @@ having abstract methods
 3)employeeBankBalance()
 4)employeeProperty()
 ---------------------------------------------------------------------------
+final is a keywork.
+we can declare class as final,varaible as final,final method
+If we declare class as final we cannot inherate.
+If we declare variable as final we cannot change it .we have to assign it.
+finat int a =10;
+If we declare method as final we cannot override it.
+---------------------------------------------
+package org.Thursday;
 
+public final class FinalDemo   //cannot inherite
+{
+final int a=10;
+final void display() //final method cannot override
 
+{
+	//a=20; value of final variable cannot be changed
+	System.out.println("this is a final method");
+}
+public static void main(String[] args) {
+	FinalDemo ob=new FinalDemo();
+	ob.display();
+	
+}
+}
+----------------------------------------------------------------------------------------------
 
 
 
