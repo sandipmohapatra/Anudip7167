@@ -1311,7 +1311,55 @@ public class Assignment2 {
 
 -----------------------------------------------------------------------------------
 
+@Override :- The compiler will check that the method exists in the parent class.
+If it doesnot exists it will through an error.
+function Overriding means the function present in the parent class should also be present in the child class.When we call the child class function a new version of the function is displayed.
+----------------------------------------------------
+example -3(function overriding)
+------------------------------------------------------------
+package org.Thursday;
 
+public class Example1 
+{
+void display()
+{
+	System.out.println("This is main class display");
+}
+}
+----------------------------
+package org.Thursday;
+
+public class Student extends Example1
+{
+	
+	  @Override 
+	  void display() 
+	  {
+	  System.out.println("This is student class display"); 
+	  }
+	 
+}
+--------------------------------------------------------
+package org.Thursday;
+
+public class Employee extends Example1
+{
+	@Override
+void display()
+{
+	System.out.println("This is employee class display");
+}
+	public static void main(String[] args) {
+		Example1 ob=new Example1();
+		ob.display();
+		Student ob1=new Student();
+		ob1.display();
+		Employee ob2=new Employee();
+		ob2.display();
+		
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
