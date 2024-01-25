@@ -1432,7 +1432,50 @@ public class IT extends Bharath
 
 }
 ----------------------------------------------------------------------------------
+example-5
+---------------------
+package org.Thursday;
 
+abstract class Bharath 
+{
+abstract void studregistration();
+abstract void marksdetails();
+abstract void feesdetails();
+void feedback()
+{
+	System.out.println("very good");
+}
+}
+----------------------------------
+package org.Thursday;
+
+public class BharathStudent extends Bharath 
+{
+
+	@Override
+	void studregistration() {
+		System.out.println("registration");
+		
+	}
+
+	@Override
+	void marksdetails() {
+		System.out.println("marks details");
+	}
+
+	@Override
+	void feesdetails() {
+		System.out.println("fee deatils");
+	}
+public static void main(String[] args) {
+	BharathStudent ob=new BharathStudent();
+		ob.studregistration();
+		ob.marksdetails();
+		ob.feesdetails();
+		ob.feedback();
+}
+}
+--------------------------------------------------------------------------------------------
 
 
 
