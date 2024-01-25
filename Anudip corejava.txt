@@ -1313,7 +1313,8 @@ public class Assignment2 {
 
 @Override :- The compiler will check that the method exists in the parent class.
 If it doesnot exists it will through an error.
-function Overriding means the function present in the parent class should also be present in the child class.When we call the child class function a new version of the function is displayed.
+function Overriding means the function present in the parent class should also be present in the child class.
+When we call the child class function a new version of the function is displayed.
 ----------------------------------------------------
 example -3(function overriding)
 ------------------------------------------------------------
@@ -1359,7 +1360,7 @@ void display()
 		
 	}
 }
----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------Assignment-4----------------------------------------------------------------------
 create a parent class Bharath
 details()
 child class ECE
@@ -1369,7 +1370,68 @@ details()
 child class IT
 details()
 ----------------------------------------------------------------------------
+example-4
+----------------------
+package org.Thursday;
 
+public class Bharath 
+{
+void show()
+{
+	System.out.println("welcome to Bharath Eng Collage");
+}
+}
+------------------------------------------------------
+package org.Thursday;
+
+public class ECE extends Bharath
+{
+	@Override
+	void show()
+	{
+		System.out.println("welcome to Bharath Eng Collage");
+		System.out.println("In ECE branch we have 78 students");
+				
+	}
+}
+----------------------------------------------------------------------------------
+package org.Thursday;
+
+public class CS extends Bharath 
+{
+	@Override
+	void show()
+	{
+		System.out.println("welcome to Bharath Eng Collage");
+		System.out.println("In CS branch we have 70 students");
+				
+	}
+}
+-----------------------------------------------------------------------------------
+package org.Thursday;
+
+public class IT extends Bharath
+{
+	@Override
+	void show()
+	{
+		System.out.println("welcome to Bharath Eng Collage");
+		System.out.println("In IT branch we have 60 students");
+				
+	}
+	public static void main(String[] args) {
+		Bharath ob=new Bharath();
+		ob.show();
+		ECE ob1=new ECE();
+		ob1.show();
+		CS ob2=new CS();
+		ob2.show();
+		IT ob3=new IT();
+		ob3.show();
+	}
+
+}
+----------------------------------------------------------------------------------
 
 
 
