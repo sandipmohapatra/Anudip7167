@@ -1508,6 +1508,94 @@ public static void main(String[] args) {
 }
 }
 ----------------------------------------------------------------------------------------------
+create a bank abstract class 
+abstract opening account() 
+abstract withdraw amount()
+abstract deposite amount()
+---------------------------------------------
+class customer extends bank
+{
+1st opening account should have minimal balance
+2nd withamount should show the final balance
+3rd deposite should show the final balance
+}
+---------------------------------------------------------------------------
+Interface
+---------------------
+Java doesnot support multiple Inheritance but by interface we can perform multiple inheritance.
+Interface contains abstract methods.
+we cannot create object of an interface.
+we have to implement into a child class the interface ,then override the abstract methods.
+then create object of the child class.
+----------------------------------------------------------------------
+example-1
+-------------------
+package org.Monday;
+
+interface First
+{
+	public void display(); //abstract methods means without any body
+	public void input();
+}
+interface Second
+{
+	public void show();
+	public void service();
+}
+
+public class InterfaceDemo implements First,Second
+{
+
+	@Override
+	public void show() {
+		System.out.println("This is show");
+		
+	}
+
+	@Override
+	public void service() {
+		System.out.println("This is service");
+		
+	}
+
+	@Override
+	public void display() {
+		System.out.println("This is display");
+		
+	}
+
+	@Override
+	public void input() {
+		System.out.println("This is input");
+		
+	}
+public static void main(String[] args) {
+	InterfaceDemo ob=new InterfaceDemo();
+	ob.display();
+	ob.input();
+	ob.show();
+	ob.service();
+}
+}
+---------------------------------------------------------------
+*when we develop a project Bank
+Bank is an interface.These abstract methods 
+we have to compulsurely implements  and have body or funtionality to it.
+-------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
