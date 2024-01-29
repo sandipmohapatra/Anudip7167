@@ -1622,7 +1622,240 @@ void display4();
 	}
  }
 ------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+Exception Handling
+------------------------------
+There are 3 type of error.
+1)compile time error.(manually)
+2)logical error(manually)
+3)runtime error.
+In exception handling we will discuss about only runtime error.
+example:-
+-------------------
+1)dividing a number by zero.
+2)crossing the array limit.
+3)entering a character in place to number.
+The aim of exception handling is we don't want the program to terminate in between.
+The program should display an error message but the flow of the program should be till the end.
+----------------------------------------------------------------------------
+There are 5 keywords used to handle the runtime errors.
+1)try
+2)catch
+3)finally
+4)throw
+5)throws
+------------------------------------------------------------------------------------------------
+program-1
+----------------------
+//The main purpose is to run the program till the end
+//java.lang.ArithmeticException the program is terminated we have to handle the error.
+//we have to put into a try ,catch block.where we suspect that error may occur.
 
+package Thrusday;
+import java.util.*;
+public class ErrorExample 
+{
+public static void main(String[] args) 
+{
+	try
+	{
+Scanner ob=new Scanner(System.in);
+System.out.println("Enter 2 nos");
+int a=ob.nextInt();
+int b=ob.nextInt();
+int c=a/b;
+System.out.println("The result is "+c);
+	}
+	catch(Exception ae)
+	{
+		System.out.println("the error is "+ae);
+	}
+System.out.println("The end of the program");
+}
+}
+-----------------------------------------------------------------
+In this case when there is error means we divide the number by zero.
+The catch will execute and display the error message.Then the rest part of the program will execute.
+-------------------------------------------------------------------------------------------------------
+when there is no error the catch block will not execute.The program will execute normally.
+--------------------------------------------------------------------------------------------------
+There are 3 type of Exception
+--------------------------------------------
+1)checked exception(we have to handle it first otherwise it will give compile time error.)
+i)IOException
+ii)SQLException
+iii)ClassNotFoundException
+iv)Interrupted Exception
+-----------------------------------------------------------------
+2)unchecked exception
+i)Arithmatic exception
+ii)NumberFormat exception
+iii)IndexOutOfBound exception
+iv)NullPointer exception
+--------------------------------------------
+3)error
+i)StackOverFlow error
+ii)OutOfMemory error
+iii)Machine error
+-----------------------------------------------
+program-3
+-------------------------
+Try with multiple catch
+-------------------------------------
+//try with multiple catch
+package Thrusday;
+import java.util.*;
+public class ErrorExample 
+{
+public static void main(String[] args) 
+{
+	try
+	{
+Scanner ob=new Scanner(System.in);
+System.out.println("Enter 2 nos");
+int a=ob.nextInt();
+int b=ob.nextInt();
+int c=a/b;
+System.out.println("The result is "+c);
+	}
+	catch(ArithmeticException ae)
+	{
+		System.out.println("the error is "+ae);
+	}
+	catch(InputMismatchException ae)
+	{
+		System.out.println("the errorr is "+ae);
+	}
+	catch(Exception ae) //this can handle all types of error
+	{
+		System.out.println("the errorrr is "+ae);
+	}
+System.out.println("The end of the program");
+}
+}
+-------------------------------------------------------------------------
+* we cannot put the catch(Exception ae) above the catch(ArithmeticException ae) or catch(InputMismatchException ae).
+This will show error unreachable code.
+because catch(Exception ae) will handle all type of errors.but catch(ArithmeticException ae) will handle only Arithmatic exception.
+--------------------------------------------------------------------------------------------------------------------------------
+We generally don't write so many catch block .It will increase the line of code.
+and the execution time also increases.so it in not adviceable to write multiple catch block.
+--------------------------------------------------------------------
+try-catch :-if try is getting error then the catch with handle the error and catch will display the error.
+try-finally:-In this if try gets a error or not it doesn't matter the finally block will definatelly exceute.
+It handles the error and mainly used for closing of connection,file closing etc.
+Can we write try block without catch block.
+yes using finally block.
+--------------------------------------------------------------------------------------------------------------------
+ Example-4
+---------------------------
+//try with finally
+package Thrusday;
+import java.util.*;
+public class ErrorExample 
+{
+public static void main(String[] args) 
+{
+	try
+	{
+Scanner ob=new Scanner(System.in);
+System.out.println("Enter 2 nos");
+int a=ob.nextInt();
+int b=ob.nextInt();
+int c=a/b;
+System.out.println("The result is "+c);
+	}
+
+	finally
+	{
+	System.out.println("The end of the program");
+	}
+}
+}
+------------------------------------------------------------------------------------------------------------------
+throws Exception:-
+-------------------------------
+we don't require any body for throws exception .we mention it with the method.
+This is mostly used with checked exception.
+when we work with IOException,SQLException,Interrupted Exception etc.
+------------------------------------------------------------------
+program-5
+-----------------------
+package Thrusday;
+public class ErrorExample 
+{
+public static void main(String[] args) throws Exception
+{
+	for(int i=1;i<=10;i++)
+	{
+		System.out.println(i);
+		Thread.sleep(1000);//interrupt the flow of control
+	}
+}
+}
+---------------------------------------------------------------------------
+*sleep is a static method so we call it using the class name.
+Thread is a class belongs to lang package.
+Thread.sleep(1000);
+------------------------------------------------------------------
+throw keyword
+--------------------------------
+It is used for user defined exception.
+example :- 
+1)age should be greater than or equal to 18 years to cast your vote.
+2)salary of employee should be greater than 15000.
+3)marks should be greater than zero.
+------------------------------------------------------------------------
+program-6
+---------------------
+package Thrusday;
+import java.util.*;
+public class ErrorExample 
+{
+public static void main(String[] args) throws Exception
+{
+	Scanner ob=new Scanner(System.in);
+	System.out.println("enter your age to cast your vote");
+	int age=ob.nextInt();
+	if(age>=18)
+		System.out.println("your are eligible to cash your vote");
+	else
+		throw new Exception("The age should be greater than or equal to 18 to caste your vote");
+}
+}
+----------------------------------------------------------------------------
+ArrayIndexOutOfBound Exception(crossing the array limit)
+----------------------------------------------------------------------
+This error occur when we cross the array limit.
+example :- if the array size is 5 and we are entering 6 elements it will throw an error that is ArrayIndexOutOfBound exception.
+--------------------------------------------------------------------------------------------------------
+program-7
+-----------------------
+package Thrusday;
+import java.util.*;
+public class ErrorExample 
+{
+public static void main(String[] args) throws Exception
+{
+	try
+	{
+	int a[]=new int[5];
+	Scanner ob=new Scanner(System.in);
+	System.out.println("enter 5 nos");
+for(int i=0;i<5;i++)
+	a[i]=ob.nextInt();
+System.out.println("5 nos are");
+for(int i=0;i<=5;i++)
+System.out.println(a[i]);
+	}
+	catch(Exception ae)
+	{
+		ae.printStackTrace();
+	}
+
+}
+}
+-------------------------------------------------------------------------------------------------------------------------------
 
 
 
