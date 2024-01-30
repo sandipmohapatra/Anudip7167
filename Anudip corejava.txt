@@ -1692,6 +1692,7 @@ i)Arithmatic exception
 ii)NumberFormat exception
 iii)IndexOutOfBound exception
 iv)NullPointer exception
+v)java.util.InputMismatchException
 --------------------------------------------
 3)error
 i)StackOverFlow error
@@ -1856,6 +1857,815 @@ System.out.println(a[i]);
 }
 }
 -------------------------------------------------------------------------------------------------------------------------------
+Collection Framework
+----------------------------------------
+int a[]=new int[5]; ---------------array the size is fixed.
+In case of Collection the size will be incrementing dyamically as we enter the data.
+---------------------------------------------------------------
+It is a collection of Object.
+It provides architecture to store,manupulate group of Objects.
+We can do all operations such as searching,sorting,inserting,delete,manupulating .
+1)Set 2)List 3)Map
+Set is a Interface .It doesnot allow duplicate data.
+It has classes :-
+1)TreeSet :- It will display the data in the shorted order.
+2)HashSet :-It will display the data in random order.
+3)LinkedHashSet :- It will display the data in same order.
+---------------------------------------------------------------------------------
+program-1
+---------------------
+//TreeSet :- It will display the data in the shorted order.
+package Friday;
+import java.util.*;
+public class SetDemo 
+{
+public static void main(String[] args)
+{
+TreeSet<Integer> ts=new TreeSet<Integer>();
+ts.add(70);
+ts.add(20);
+ts.add(30);
+ts.add(10);
+ts.add(50);
+ts.add(50);
+ts.add(60);
+System.out.println(ts);
+}
+}
+---------------------------------------------------------------------------
+//HashSet :-It will display the data in random order.
+package Friday;
+import java.util.*;
+public class SetDemo 
+{
+public static void main(String[] args)
+{
+HashSet<Integer> ts=new HashSet<Integer>();
+ts.add(70);
+ts.add(20);
+ts.add(30);
+ts.add(10);
+ts.add(50);
+ts.add(50);
+ts.add(60);
+System.out.println(ts);
+}
+}
+-----------------------------------------------------------------
+LinkedHashSet :- It will display the data in same order.
+package Friday;
+import java.util.*;
+public class SetDemo 
+{
+public static void main(String[] args)
+{
+LinkedHashSet<Integer> ts=new LinkedHashSet<Integer>();
+ts.add(70);
+ts.add(20);
+ts.add(30);
+ts.add(10);
+ts.add(50);
+ts.add(50);
+ts.add(60);
+System.out.println(ts);
+}
+}
+----------------------------------------------------------------------------------------
+Program-2
+-----------------------
+package Friday;
+public class Student 
+{
+int rollno;
+String name,address;
+public Student(int rollno, String name, String address) {
+	super();
+	this.rollno = rollno;
+	this.name = name;
+	this.address = address;
+}
+@Override
+public String toString() {
+	return "Student [rollno=" + rollno + ", name=" + name + ", address=" + address + "]";
+}
+
+}
+---------------------------------------------------------------------------------------
+package Friday;
+import java.util.*;
+public class SetDemo 
+{
+public static void main(String[] args)
+{
+	Student ob=new Student(101,"sandip","bangalore");
+	Student ob1=new Student(102,"shubam","bangalore");
+	Student ob2=new Student(103,"trupti","bangalore");
+	
+LinkedHashSet<Student> ts=new LinkedHashSet<Student>();
+ts.add(ob);
+ts.add(ob1);
+ts.add(ob2);
+System.out.println(ts);
+}
+}
+--------------------------------------------------------------------------------------------------
+wap to enter data of few employees into a LinkedHashSet and display it.
+empno,name,salary
+------------------------------------------------------------------------------------------------------
+AutoBoxing and Unboxing
+------------------------------------------
+The autoboxing convert the primative data types into it equivalent Wrapper type.
+The unboxing convert the wrapper type to primative datatype.
+---------------------------------------------------------------------------------------
+Example
+-------------------
+package Friday;
+public class AutoBoxingDemo
+{
+public static void main(String[] args) {
+	int a=10;//primative data type to wrapper class convertion is known as autoboxing
+	Integer b=new Integer(a);
+	System.out.println(b);
+}
+}
+--------------------------------------------------
+package Friday;
+public class UnBoxingDemo
+{
+public static void main(String[] args) {
+	Integer b=new Integer(10);//wrapper class to primative data type conversion
+	int a=b;
+	System.out.println(b);
+}
+}
+----------------------------------------------------------------
+Example-3
+--------------------
+package monday;
+import java.util.*;
+public class SetDemo 
+{
+public static void main(String[] args)
+{
+TreeSet<Integer> ts=new TreeSet<Integer>();
+System.out.println(ts.isEmpty());//to check if the TreeSet is empty or not returns a boolean value
+System.out.println(ts.size());
+ts.add(70);
+ts.add(20);
+ts.add(30);
+ts.add(10);
+ts.add(50);
+ts.add(50);
+ts.add(60);
+System.out.println(ts.isEmpty());
+System.out.println(ts.size());
+System.out.println(ts.contains(10));//searching .return boolean value
+System.out.println(ts.contains(100));
+System.out.println(ts.size());
+ts.remove(50);//remove the object
+System.out.println(ts);
+ts.clear(); //remove all the objects
+System.out.println(ts);
+System.out.println(ts.size());
+}
+}
+------------------------------------------
+for each Demo
+---------------------
+package monday;
+import java.util.*;
+public class SetDemo 
+{
+public static void main(String[] args)
+{
+TreeSet<Integer> ts=new TreeSet<Integer>();
+System.out.println(ts.isEmpty());//to check if the TreeSet is empty or not returns a boolean value
+System.out.println(ts.size());
+ts.add(70);
+ts.add(20);
+ts.add(30);
+ts.add(10);
+ts.add(50);
+ts.add(50);
+ts.add(60);
+System.out.println("***********************");
+//for each loop
+for(Object obj:ts)//the ts value will be stored into the obj one by one and we will print the obj.
+	System.out.println(obj);
+System.out.println("***********************");
+}
+}
+-------------------------------------------
+Iterator :- it is used to iterate the data .It is an Iterface.
+It has 3 methods 
+1)hasNext();
+2)next();
+3)remove();
+--------------------------------------------------------------
+example-4
+----------------------
+package monday;
+import java.util.*;
+public class SetDemo 
+{
+public static void main(String[] args)
+{
+TreeSet<Integer> ts=new TreeSet<Integer>();
+ts.add(70);
+ts.add(20);
+ts.add(30);
+ts.add(10);
+ts.add(50);
+ts.add(50);
+ts.add(60);
+System.out.println("***********************");
+//for each loop
+for(Object obj:ts)//the ts value will be stored into the obj one by one and we will print the obj.
+	System.out.println(obj);
+System.out.println("***********************");
+Iterator itr=ts.iterator();
+while(itr.hasNext())
+{
+	System.out.println(itr.next());
+}
+}
+}
+--------------------------------------------------------------------------------
+List :-It is an Interface.
+It allows duplicate records.
+We have classes 1)Stack 2)ArrayList 3)Linkedlist 4)Vector
+stack :FILO .The last element will be index 0.
+List display in the same order.
+---------------------------------------------------------------
+example-5
+-------------------
+package monday;
+import java.util.*;
+public class ListDemo
+{
+public static void main(String[] args)
+{
+Stack<Integer> st=new Stack<Integer>();
+st.push(10);//insert the data
+st.push(20);
+st.push(30);
+st.push(40);
+st.push(50);
+st.push(60);
+for(Object obj:st)
+	System.out.println(obj);
+System.out.println("********************************");
+System.out.println(st.pop());//delete the data
+System.out.println(st.peek());//to see the last data
+System.out.println(st.pop());//delete the data
+System.out.println("********************************");
+for(Object obj:st)
+	System.out.println(obj);
+}
+}
+-----------------------------------------------------------------------------------------------
+example-6
+---------------------
+package monday;
+import java.util.*;
+public class ListDemo
+{
+public static void main(String[] args)
+{
+Stack<Integer> st=new Stack<Integer>();
+st.push(10);//insert the data
+st.push(20);
+st.push(30);
+st.push(40);
+st.push(50);
+st.push(60);
+for(Object obj:st)
+	System.out.println(obj);
+System.out.println("********************************");
+System.out.println(st.pop());//delete the data
+System.out.println(st.peek());//to see the last data
+System.out.println(st.pop());//delete the data
+System.out.println("********************************");
+for(Object obj:st)
+	System.out.println(obj);
+System.out.println("********************************");
+//jdk1.8
+st.forEach((x)->System.out.println(x));//The wrapper class super class is Object
+System.out.println(st.search(10));//It will return the position of 10.It is last
+System.out.println(st.search(20));
+System.out.println(st.search(200));
+}
+}
+----------------------------------------------------------------------------
+package monday;
+import java.util.*;
+public class ListDemo
+{
+public static void main(String[] args)
+{
+Stack<Integer> st=new Stack<Integer>();
+st.push(10);//insert the data
+st.push(20);
+st.push(30);
+st.push(40);
+st.push(50);
+st.push(60);
+for(Object obj:st)
+	System.out.println(obj);
+System.out.println("********************************");
+System.out.println(st.pop());//delete the data
+System.out.println(st.peek());//to see the last data
+System.out.println(st.pop());//delete the data
+System.out.println("********************************");
+for(Object obj:st)
+	System.out.println(obj);
+System.out.println("********************************");
+//jdk1.8
+st.forEach((x)->System.out.println(x));//The wrapper class super class is Object
+System.out.println(st.search(10));//It will return the position of 10.
+System.out.println(st.search(20));
+System.out.println(st.search(200));//element not found it displays -1
+try
+{
+System.out.println(st.pop());
+System.out.println(st.pop());
+System.out.println(st.pop());
+System.out.println(st.pop());
+System.out.println(st.pop());
+}
+catch(Exception ae)
+{
+	System.out.println("Stack is empty");
+}
+}
+}
+-----------------------------------------------------------------------------------
+Example-7
+------------------------
+Linked List
+----------------------
+package monday;
+import java.util.*;
+public class ListDemo
+{
+public static void main(String[] args)
+{
+LinkedList<Integer> ls=new LinkedList<Integer>();
+LinkedList<Integer> ls1=new LinkedList<Integer>();
+ls.add(10);
+ls.add(20);
+ls.add(30);
+ls.add(40);
+ls1.add(100);
+ls1.add(200);
+ls1.add(300);
+ls1.add(400);
+ls.forEach((x)->System.out.println(x));
+System.out.println("*******************");
+ls1.forEach((x)->System.out.println(x));
+System.out.println("*******************");
+ls.addFirst(9);
+ls1.addFirst(99);
+ls.forEach((x)->System.out.println(x));
+System.out.println("*******************");
+ls1.forEach((x)->System.out.println(x));
+System.out.println("*******************");
+ls.removeFirst();
+ls1.removeFirst();
+ls.forEach((x)->System.out.println(x));
+System.out.println("*******************");
+ls1.forEach((x)->System.out.println(x));
+System.out.println("*******************");
+ls.removeLast();
+ls1.removeLast();
+System.out.println(ls.getFirst());
+System.out.println(ls1.getLast());
+ls.addAll(ls1);
+System.out.println("*******************");
+ls.forEach((x)->System.out.println(x));
+}
+}
+--------------------------------------------------------------------------------------
+Interface to iterate the data:-
+----------------------------------------------
+Iterator:-hasNext(),next();remove();//In this we can move in one direction.
+ListIterator:- In this we can move in both direction.
+forward :- In this we have hasNext(),next().First the pointer with move in forward direction then it will move in backward direction.
+backword:- In this we have hasPrevious(),previous();
+-------------------------------------------------------------------------------------------------------------
+Example-8
+--------------------------
+package monday;
+import java.util.*;
+public class ListDemo
+{
+public static void main(String[] args)
+{
+LinkedList<String> ls=new LinkedList<String>();
+ls.add("Trupti");
+ls.add("Shubham");
+ls.add("Madhu");
+ls.add("Geetanjali");
+ls.add("Sunil");
+ls.add("Deepak");
+System.out.println("Forword Direction");
+ListIterator<String> li=ls.listIterator();
+while(li.hasNext())
+{
+	System.out.println(li.next());
+}
+System.out.println("Backward Direction");
+while(li.hasPrevious())
+{
+	System.out.println(li.previous());
+}
+}
+}
+-------------------------------------------------------------------------------------------------------
+ java.util.Collections
+---------------------------------------
+It has lot of static methods which can be implemented ob set,list,map,queue
+It this we have sort() which can sort a list,map,queue.
+Collections.sort()
+---------------------------------------------------
+Example-9
+----------------------
+package monday;
+import java.util.*;
+public class ListDemo
+{
+public static void main(String[] args)
+{
+LinkedList<String> ls=new LinkedList<String>();
+ls.add("Trupti");
+ls.add("Shubham");
+ls.add("Madhu");
+ls.add("Geetanjali");
+ls.add("Sunil");
+ls.add("Deepak");
+Collections.sort(ls);
+ls.forEach((x)->System.out.println(x));
+}
+}
+-------------------------------------------------------------------------
+package monday;
+import java.util.*;
+public class ListDemo
+{
+public static void main(String[] args)
+{
+LinkedList<Integer> ls=new LinkedList<Integer>();
+ls.add(10);
+ls.add(40);
+ls.add(30);
+ls.add(20);
+ls.add(50);
+Collections.sort(ls);
+ls.forEach((x)->System.out.println(x));
+System.out.println("the largest no is "+Collections.max(ls));
+System.out.println("the smallest no is "+Collections.min(ls));
+}
+}
+-------------------------------------------------------------------------------------------------
+package monday;
+import java.util.*;
+public class ListDemo
+{
+public static void main(String[] args)
+{
+ArrayList<Integer> ls=new ArrayList<Integer>();
+ls.add(10);
+ls.add(40);
+ls.add(30);
+ls.add(20);
+ls.add(50);
+Collections.sort(ls);
+ls.forEach((x)->System.out.println(x));
+System.out.println("the largest no is "+Collections.max(ls));
+System.out.println("the smallest no is "+Collections.min(ls));
+}
+}
+-------------------------------------------------------------------------
+package monday;
+import java.util.*;
+public class ListDemo
+{
+public static void main(String[] args)
+{
+ArrayList<Integer> ls=new ArrayList<Integer>();
+ls.add(10);
+ls.add(40);
+ls.add(30);
+ls.add(20);
+ls.add(50);
+Collections.sort(ls,Collections.reverseOrder());
+ls.forEach((x)->System.out.println(x));
+}
+}
+------------------------------------------------------------------------------------------------------------
+package monday;
+import java.util.*;
+public class ListDemo
+{
+public static void main(String[] args)
+{
+ArrayList<Integer> ls=new ArrayList<Integer>();
+ls.add(Integer.valueOf(10));//it will convert Object to primative datatype
+ls.add(Integer.valueOf(40));
+ls.add(30);//it internally convert object to primative datatype
+ls.add(20);
+ls.add(50);
+Collections.sort(ls,Collections.reverseOrder());
+ls.forEach((x)->System.out.println(x));
+}
+}
+-------------------------------------------------------------
+java.lang.Comparable :-
+public abstract int compareTo(T);
+it is used to sort our own object data.It checks the String ascii code.
+in this if the current object is greater than the specified object it return (+) value.
+in this if the current object is lesser than the specified object it return (-) value.
+in this if the current object is equal than the specified object it return zero value.
+-----------------------------------------------------------------------
+Example-10
+----------------------
+package monday;
+
+public class MarlabsEmp implements Comparable<MarlabsEmp>
+{
+
+String name;
+MarlabsEmp(String name)
+{
+	this.name=name;
+}
+		@Override
+		public int compareTo(MarlabsEmp obj)
+	{
+		return name.compareTo(obj.name);
+	}}
+--------------------------------------------------------------------------------------------------------------------------
+package monday;
+import java.util.*;
+public class ListDemo
+{
+public static void main(String[] args) 
+{
+ArrayList<MarlabsEmp> al=new ArrayList<MarlabsEmp>();
+al.add(new MarlabsEmp("Geetanjali"));
+al.add(new MarlabsEmp("Shubam"));
+al.add(new MarlabsEmp("Deepak"));
+al.add(new MarlabsEmp("Trupti"));
+Collections.sort(al);
+for(MarlabsEmp ob:al)
+	System.out.println(ob.name);
+}
+}
+--------------------------------------------------------------------------------------------
+Example-11
+---------------------
+package monday;
+
+public class MarlabsEmp implements Comparable<MarlabsEmp>
+{
+	Integer empid;
+String name;
+MarlabsEmp(Integer empid,String name)
+{
+	this.empid=empid;
+	this.name=name;
+}
+@Override
+		public int compareTo(MarlabsEmp obj)
+	{
+		return empid.compareTo(obj.empid);
+	}}
+
+-----------------------------------------------------------
+package monday;
+import java.util.*;
+public class ListDemo
+{
+public static void main(String[] args) 
+{
+ArrayList<MarlabsEmp> al=new ArrayList<MarlabsEmp>();
+al.add(new MarlabsEmp(104,"Geetanjali"));
+al.add(new MarlabsEmp(103,"Shubam"));
+al.add(new MarlabsEmp(102,"Deepak"));
+al.add(new MarlabsEmp(101,"Trupti"));
+Collections.sort(al);
+for(MarlabsEmp ob:al)
+	System.out.println(ob.empid);
+}
+}
+--------------------------------------------------------------------------------------
+Map :-It is an interface.
+ In this we enter key and values pair.
+The key should not be duplicate.The value can be duplicate.
+The key and value pair is known as entry.
+Map is useful to search,update or delete elements on the basis of the key.
+-------------------------------------------------------------
+Map --HashMap,LinkedHashMap,TreeMap(sorting)
+-----------------------------------------------------------------------------------
+Example-12
+------------------
+package monday;
+import java.util.*;
+public class HashMapDemo
+{
+public static void main(String[] args)
+{
+HashMap<Integer, String> hm=new HashMap<Integer, String>();
+hm.put(1, "Gitanjali");
+hm.put(2, "Subham");
+hm.put(3, "sandip");
+hm.put(4, "sunil");
+hm.put(5, "sunil");
+hm.put(4, "ajay");
+Scanner ob=new Scanner(System.in);
+System.out.println("enter rollno and name");
+int rollno=ob.nextInt();
+String name=ob.next();
+hm.put(rollno, name);
+System.out.println(hm);
+}
+}
+-------------------------------------------------------------------
+Set set=hm.entrySet();
+Iterator itr=set.iterator();
+while(itr.hasNext())
+{
+	Map.Entry en=(Map.Entry<Integer, String>)itr.next();
+	System.out.println(en.getKey()+ "  "+en.getValue());
+}
+---------------------------------------------------------------------------------------------
+HashSet is converted to set because we don't the Interface Iterator in the HashMap.We have it in Set.
+entrySet() is used to convert the Map into set.
+Map.Entry is a class contain getKey(),getValue()
+-------------------------------------------------------------------------------------------------------
+Example-13
+--------------------
+package monday;
+import java.util.*;
+public class HashMapDemo
+{
+public static void main(String[] args)
+{
+HashMap<Integer, String> hm=new HashMap<Integer, String>();
+hm.put(1, "Gitanjali");
+hm.put(2, "Subham");
+hm.put(3, "sandip");
+hm.put(4, "sunil");
+hm.put(5, "sunil");
+hm.put(4, "ajay");
+Scanner ob=new Scanner(System.in);
+System.out.println("enter rollno and name");
+int rollno=ob.nextInt();
+String name=ob.next();
+hm.put(rollno, name);
+System.out.println(hm);
+Set set=hm.entrySet();
+Iterator itr=set.iterator();
+while(itr.hasNext())
+{
+	Map.Entry en=(Map.Entry<Integer, String>)itr.next();
+	System.out.println(en.getKey()+ "  "+en.getValue());
+}}}
+-------------------------------------------------------------------------------------------------------------
+package monday;
+import java.util.*;
+public class HashMapDemo
+{
+public static void main(String[] args)
+{
+HashMap<Integer, String> hm=new HashMap<Integer, String>();
+hm.put(1, "Gitanjali");
+hm.put(2, "Subham");
+hm.put(3, "sandip");
+hm.put(4, "sunil");
+hm.put(5, "sunil");
+hm.put(4, "ajay");
+Scanner ob=new Scanner(System.in);
+System.out.println("enter rollno and name");
+int rollno=ob.nextInt();
+String name=ob.next();
+hm.put(rollno, name);
+System.out.println(hm);
+Set set=hm.entrySet();
+Iterator itr=set.iterator();
+while(itr.hasNext())
+{
+	Map.Entry en=(Map.Entry<Integer, String>)itr.next();
+	System.out.println(en.getKey()+ "  "+en.getValue());
+}
+System.out.println("********************");
+for(Map.Entry<Integer, String> m: hm.entrySet())
+	System.out.println(m.getKey()+ "    "+m.getValue());
+System.out.println("****************************");
+hm.remove(4);
+hm.remove(1,"Gitanjali");
+hm.replace(2, "Ravi");
+hm.replace(3,"sandip", "Ravi.k");
+System.out.println("********************");
+for(Map.Entry<Integer, String> m: hm.entrySet())
+	System.out.println(m.getKey()+ "    "+m.getValue());
+System.out.println("****************************");
+}}
+---------------------------------------------------------------------------
+package monday;
+import java.util.*;
+public class HashMapDemo
+{
+public static void main(String[] args)
+{
+HashMap<Integer, String> hm=new HashMap<Integer, String>();
+hm.put(1, "Gitanjali");
+hm.put(2, "Subham");
+hm.put(3, "sandip");
+hm.put(4, "sunil");
+hm.put(5, "sunil");
+hm.put(4, "ajay");
+Scanner ob=new Scanner(System.in);
+System.out.println("enter rollno and name");
+int rollno=ob.nextInt();
+String name=ob.next();
+hm.put(rollno, name);
+System.out.println(hm);
+Set set=hm.entrySet();
+Iterator itr=set.iterator();
+while(itr.hasNext())
+{
+	Map.Entry en=(Map.Entry<Integer, String>)itr.next();
+	System.out.println(en.getKey()+ "  "+en.getValue());
+}
+System.out.println("********************");
+for(Map.Entry<Integer, String> m: hm.entrySet())
+	System.out.println(m.getKey()+ "    "+m.getValue());
+System.out.println("****************************");
+hm.remove(4);
+hm.remove(1,"Gitanjali");
+hm.replace(2, "Ravi");
+hm.replace(3,"sandip", "Ravi.k");
+System.out.println("********************");
+for(Map.Entry<Integer, String> m: hm.entrySet())
+	System.out.println(m.getKey()+ "    "+m.getValue());
+System.out.println("****************************");
+hm.replaceAll((Integer,String)->"sandip");
+System.out.println("****************************");
+for(Map.Entry<Integer, String> m: hm.entrySet())
+	System.out.println(m.getKey()+ "    "+m.getValue());
+hm.clear();
+System.out.println("****************************");
+for(Map.Entry<Integer, String> m: hm.entrySet())
+	System.out.println(m.getKey()+ "    "+m.getValue());
+System.out.println("****************************");
+}}
+----------------------------------------------------------------------------------------------
+Example-14
+-------------------------
+package HashMapDemo;
+import java.util.*;
+public class Employee 
+{
+int empid;
+String name,address;
+float salary;
+public Employee(int empid, String name, String address, float salary)
+{
+	super();
+	this.empid = empid;
+	this.name = name;
+	this.address = address;
+	this.salary = salary;
+}
+@Override
+public String toString() {
+return "Employee [empid=" + empid + ", name=" + name + ", address=" + address + ", salary=" + salary + "]";
+}}
+---------------------------------------------------------------------------------------------------
+package HashMapDemo;
+import java.util.*;
+public class HashMapExample 
+{
+public static void main(String[] args) 
+{
+	HashMap<Integer,Employee> map=new HashMap<Integer,Employee> ();
+	Employee emp1=new Employee(101,"sandip","Bangalore",5600.50f);
+	Employee emp2=new Employee(102,"sunil","Bangalore",5700.50f);
+	Employee emp3=new Employee(103,"pradeep","Bangalore",5800.50f);
+	map.put(101, emp1);
+	map.put(102, emp2);
+	map.put(103, emp3);
+	Scanner ob=new Scanner(System.in);
+	System.out.println("Enter the empno you want to search");
+	int empno=ob.nextInt();
+	
+	for(Map.Entry<Integer, Employee> m: map.entrySet())
+		if(m.getKey()==empno)
+		System.out.println(m.getKey()+ "    "+m.getValue());
+}
+}
+-----------------------------------------------------------------------------------------------------------------------
 
 
 
