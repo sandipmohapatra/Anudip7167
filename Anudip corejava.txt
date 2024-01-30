@@ -2031,6 +2031,18 @@ AutoBoxing and Unboxing
 The autoboxing convert the primative data types into it equivalent Wrapper type.
 The unboxing convert the wrapper type to primative datatype.
 ---------------------------------------------------------------------------------------
+Datatype --Wrapper class
+all datatypes in java are also classes.
+-------------------------------------------
+byte--Byte
+short--Short
+int---Integer
+long--Long
+float--Float
+double--Double
+String
+boolen---Boolen
+-----------------------------------------------------------------------
 Example
 -------------------
 package Friday;
@@ -2300,6 +2312,98 @@ ls.forEach((x)->System.out.println(x));
 }
 }
 --------------------------------------------------------------------------------------
+example-11
+--------------------------
+package org.tuesday;
+import java.util.ArrayList;
+
+class Book
+{
+private int bookId;
+private String bookName;
+private String authorName;
+public Book(int bookId, String bookName, String authorName) {
+	super();
+	this.bookId = bookId;
+	this.bookName = bookName;
+	this.authorName = authorName;
+}
+@Override
+public String toString() {
+	return "Book [bookId=" + bookId + ", bookName=" + bookName + ", authorName=" + authorName + "]";
+}
+
+
+}
+-----------------------------------------------------------------------
+package org.tuesday;
+
+import java.util.ArrayList;
+
+public class CustomArrayList {
+public static void main(String[] args)
+{
+	
+ArrayList<Book> books=new ArrayList<Book>();
+books.add(new Book(101, "let us c", "Yashavant P Kanetkar"));
+books.add(new Book(102, "head first java ", "Kathy Sierra"));
+
+System.out.println("--All Books--");
+for(Book b:books)
+{
+	System.out.println(b);
+}
+}
+}
+----------------------------------------------------------------------------------
+package com.anudip;
+
+import java.util.ArrayList;
+
+public class EvenNumberSum {
+
+	public static void main(String[] args) {
+		 ArrayList<Integer> numbers = new ArrayList<Integer>();
+	        numbers.add(2);
+	        numbers.add(5);
+	        numbers.add(8);
+	        numbers.add(10);
+	        numbers.add(15);
+
+	        int evenSum = 0;
+	        for (int num : numbers) {
+	            if (num % 2 == 0) {
+	                evenSum += num;
+	            }
+	        }
+
+	        System.out.println("Sum of even numbers: " + evenSum);
+	    }
+	}
+-------------------------------------------------------------------------------------------------------------------
+package org.tuesday;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class ReverseList {
+
+	public static void main(String[] args) {
+	    List<String> words = new ArrayList<String>();
+	   words.add("apple");
+	   words.add("banana");
+	   words.add("cherry");
+	   words.add("date");
+	       System.out.println("original list: " + words);
+        Collections.reverse(words);
+       
+        System.out.println("Reversed list: " + words);
+	}
+
+}
+-----------------------------------------------------------------------------------------------
+	
 Interface to iterate the data:-
 ----------------------------------------------
 Iterator:-hasNext(),next();remove();//In this we can move in one direction.
