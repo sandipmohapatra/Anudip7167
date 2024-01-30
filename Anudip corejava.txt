@@ -1625,7 +1625,7 @@ void display4();
 -------------------------------------------------------------------------------------------------------------
 Exception Handling
 ------------------------------
-There are 3 type of error.
+There are 3 type of errors.
 1)compile time error.(manually)
 2)logical error(manually)
 3)runtime error.
@@ -1865,7 +1865,7 @@ In case of Collection the size will be incrementing dyamically as we enter the d
 It is a collection of Object.
 It provides architecture to store,manupulate group of Objects.
 We can do all operations such as searching,sorting,inserting,delete,manupulating .
-1)Set 2)List 3)Map
+1)Set 2)List 3)Map are 3 interfaces.
 Set is a Interface .It doesnot allow duplicate data.
 It has classes :-
 1)TreeSet :- It will display the data in the shorted order.
@@ -1931,6 +1931,60 @@ System.out.println(ts);
 }
 }
 ----------------------------------------------------------------------------------------
+package org.tuesday;
+import java.util.*;
+public class SetDemo 
+{
+public static void main(String[] args)
+{
+TreeSet<String> ts=new TreeSet<String>();
+ts.add("Banana");
+ts.add("Apple");
+ts.add("Orange");
+ts.add("Pine apple");
+ts.add("Grapes");
+ts.add("Water Melon");
+ts.add("Lemon");
+System.out.println(ts);
+}
+}
+-----------------------------------------------------------------
+package org.tuesday;
+import java.util.*;
+public class SetDemo 
+{
+public static void main(String[] args)
+{
+HashSet<String> ts=new HashSet<String>(); //display data in random order
+ts.add("Banana");
+ts.add("Apple");
+ts.add("Orange");
+ts.add("Pine apple");
+ts.add("Grapes");
+ts.add("Water Melon");
+ts.add("Lemon");
+System.out.println(ts);
+}
+}
+--------------------------------------------------------------------------------------------------
+package org.tuesday;
+import java.util.*;
+public class SetDemo 
+{
+public static void main(String[] args)
+{
+LinkedHashSet<String> ts=new LinkedHashSet<String>(); //display data in same order
+ts.add("Banana");
+ts.add("Apple");
+ts.add("Orange");
+ts.add("Pine apple");
+ts.add("Grapes");
+ts.add("Water Melon");
+ts.add("Lemon");
+System.out.println(ts);
+}
+}
+----------------------------------------------------------------------------------------------------------------------
 Program-2
 -----------------------
 package Friday;
@@ -1969,8 +2023,8 @@ System.out.println(ts);
 }
 }
 --------------------------------------------------------------------------------------------------
-wap to enter data of few employees into a LinkedHashSet and display it.
-empno,name,salary
+wap to enter data of few student into a LinkedHashSet and display it.
+Rollno,name,marks,div
 ------------------------------------------------------------------------------------------------------
 AutoBoxing and Unboxing
 ------------------------------------------
