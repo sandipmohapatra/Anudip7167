@@ -2653,6 +2653,83 @@ System.out.println(hm);
 }
 }
 -------------------------------------------------------------------
+package org.Thursday;
+import java.util.HashMap;
+import java.util.Map;
+
+public class HashMapExample {
+
+	public static void main(String[] args) {
+		  // Create a new HashMap instance with keys of type String and values of type Integer
+        Map<String, Integer> hashMap = new HashMap<>();
+
+        // Associate values with keys using the put() method
+        hashMap.put("one", 1);
+        hashMap.put("two", 2);
+        hashMap.put("three", 3);
+
+        // Print the contents of the HashMap
+        System.out.println("HashMap: " + hashMap);
+
+	}
+
+}
+------------------------------------------------------------------------------------------------------
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class CricketScoresMap {
+
+	public static void main(String[] args) {
+		// Create a Map instance with keys of type String (player name) and values of type Integer (score)
+        Map<String, Integer> cricketScores = new HashMap<>();
+
+        // Populate the Map with player names and scores
+        cricketScores.put("Virat Kohli", 112);
+        cricketScores.put("Rohit Sharma", 89);
+        cricketScores.put("Shikhar Dhawan", 45);
+        cricketScores.put("KL Rahul", 67);
+        cricketScores.put("Rishabh Pant", 34);
+
+        // Search for a player's name and display their score
+        String x = "Rohit Sharma";
+        if (cricketScores.containsKey(x)) {
+            int playerScore = cricketScores.get(x);
+            System.out.println(x + "'s score: " + playerScore);
+        } else {
+            System.out.println(x + " not found in the map.");
+        }
+    }
+}
+----------------------------------------------------------------------------------------------------------------------------
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckHashMapEmpty {
+
+	public static void main(String[] args) {
+		   // Create a new HashMap instance with keys of type String and values of type Integer
+        Map<String, Integer> hashMap = new HashMap<>();
+
+        // Associate values with keys using the put() method
+        hashMap.put("one", 1);
+        hashMap.put("two", 2);
+        hashMap.put("three", 3);
+
+        // Check if the HashMap is empty
+        boolean isEmpty = hashMap.isEmpty();
+        System.out.println("Is the HashMap empty? " + isEmpty);
+
+        // Clear the HashMap
+        hashMap.clear();
+
+        // Check again if the HashMap is empty
+        isEmpty = hashMap.isEmpty();
+        System.out.println("Is the HashMap empty after clearing? " + isEmpty);
+    }
+}
+---------------------------------------------------------------------------------
 Set set=hm.entrySet();
 Iterator itr=set.iterator();
 while(itr.hasNext())
