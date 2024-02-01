@@ -2730,6 +2730,12 @@ public class CheckHashMapEmpty {
     }
 }
 ---------------------------------------------------------------------------------
+Assignment on Collection FrameWork
+wap to enter some names and marks obtained in your exam
+then search for a name and display the marks obtained.
+
+
+---------------------------------------------------------------------------------------------
 Set set=hm.entrySet();
 Iterator itr=set.iterator();
 while(itr.hasNext())
@@ -2763,6 +2769,7 @@ int rollno=ob.nextInt();
 String name=ob.next();
 hm.put(rollno, name);
 System.out.println(hm);
+
 Set set=hm.entrySet();
 Iterator itr=set.iterator();
 while(itr.hasNext())
@@ -2905,8 +2912,20 @@ public static void main(String[] args)
 }
 }
 -----------------------------------------------------------------------------------------------------------------------
-
-
+Q1)create a bank class using hashmap <accno,bank>
+name
+address
+salary
+-------------------------------
+search for the accno and display the details 
+--------------------------------------------------------------------------
+Q2)create a student class using hashmap <rollno,student>
+name
+address
+total marks
+-------------------------------
+search for the Rollno and display the details 
+--------------------------------------------------------------------------
 
 
 
