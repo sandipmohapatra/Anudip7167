@@ -2912,32 +2912,752 @@ public static void main(String[] args)
 }
 }
 -----------------------------------------------------------------------------------------------------------------------
-Q1)create a bank class using hashmap <accno,bank>
+Q1)create a bank class using Hashmap <accno,bank>
 name
 address
 salary
 -------------------------------
-search for the accno and display the details 
+search for the accno and display the details of the customer.
+
 --------------------------------------------------------------------------
-Q2)create a student class using hashmap <rollno,student>
+Q2)create a student class using Hashmap <rollno,student>
 name
 address
 total marks
+Grade
 -------------------------------
-search for the Rollno and display the details 
+search for the Rollno and display the details of a student.
 --------------------------------------------------------------------------
 
+JDBC :- Java database connectivity
+Oracle 10xe/MySql--structured Data(rows and columns)
+MongoDB --unstructured Data(facebook,paytm)
+-------------------------
+JDBC we have 2 types of driver:-
+1)Thick Driver
+2)Thin Driver
+why we require driver.
+1)java(byte code) -------------Driver(interpreter)-------------------Oracle/Mysql/sqlserver(ASCII code)
+
+1)Thick Driver 
+type1 driver-[java prg---odbc driver----Database]
+ODBC -open database connectivity.It comes with the o/s.
+-----------------------------------------------------------------------------------------
+type2 driver-[java prg---driver----database]This is vendor specific.  
+-------------------------------------------------------------------------------------------
+type3 driver-[Java prg ---middleware server---Databse] This is vendor specific
+---------------------------------------------------------------------------------------
+2)Thin Driver
+type4 driver-[java prg---driver----database].The driver is purely java and interacts directly with the database and is faster.
+
+----------------------------------------------------------------------------------------------
+We have to import java.sql package and handle the SQLException.
+
+There are 2 classes and 8 interfaces
+classes :- DriverManager,Types
+Interfaces :- Driver,Connection,Statement,PreparedStatement,CallableStatement,ResultSet,ResultSetMetaData,DatabaseMetaData
+-------------------------------------------------------------------------
+When we do static data crud (create,read,update,delete) operartion we  use Statement.
+When we do dynamic data crud (create,read,update,delete) operartion we  use PreparedStatement.
+When we work with function,procedure we use CallableStatement.
+------------------------------------------------------------------------------------------------------
+Example :- 
+import java.sql;
+class student
+{
+main()throws Exception
+{
+1)to load the driver
+2)to get connection from DriverManager
+3)Statement()/preparedStatement(pass the sql query)
+4)execute(pass the sql query)/execute();
+}}
+---------------------------------------------------------------------------------
+Example-1
+----------------------
+Insert
+------------------
+package JDBC;
+import java.sql.*;
+public class Student 
+{
+public static void main(String[] args)throws Exception
+{
+	//to load the driver
+	Class.forName("oracle.jdbc.driver.OracleDriver");
+	//to get connection from DriverManager
+	Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+	//jdbc--protocal ,
+	//oracle is ---database,
+	//thin--type 4 driver,
+	//localhost--both server and client reside in the same machine
+	//localhost (IP address of the server :123.12.34.4),default port no :1521,
+	//xe is the database name,
+	//system--username
+	//1234 is the password.
+	//Statement()/preparedStatement(pass the sql query)
+	Statement st=con.createStatement();
+	//execute(pass the sql query)/execute();
+	st.execute("insert into marlabsstud values(101,'Shubam','Bangalore')");//static query
+	System.out.println("Row Inserted");		
+}
+}
+-----------------------------------------------------------------------------------------------------
+update data
+-------------------
+package JDBC;
+import java.sql.*;
+public class Student 
+{
+public static void main(String[] args)throws Exception
+{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+		Statement st=con.createStatement();
+		st.execute("update marlabsstud set address='Kolkotta' where empno=101");
+		System.out.println("Row updated");		
+}
+}
+---------------------------------------------------------------------------------
+Delete
+-------------------
+package JDBC;
+import java.sql.*;
+public class Student 
+{
+public static void main(String[] args)throws Exception
+{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+		Statement st=con.createStatement();
+		st.execute("delete marlabsstud where empno=101");
+		System.out.println("Row deleted");		
+}
+}
+--------------------------------------------------------------------------------------------------------
+ResultSet rs=st.executeQuery("select * from marlabsstud");
+All the data from the marlabsstud table will be stored in the ResultSet variable rs.
+we will use a while loop to eterate the data.The pointer will move from the first row till the last row.
+-----------------
+select
+------------------------
+package JDBC;
+import java.sql.*;
+public class Student 
+{
+public static void main(String[] args)throws Exception
+{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+		Statement st=con.createStatement();
+		ResultSet rs=st.executeQuery("select * from marlabsstud");
+		while(rs.next())
+		{
+		System.out.println(rs.getInt(1)+"   "+rs.getString(2)+"  "+rs.getString(3));	
+		}
+		
+}
+}
+---------------------------------------------------------------------------------------
+types of execute methods
+----------------------------------------
+1)executeQuery() ----select
+2)exceuteUpdate() -----update(returns 0 or 1)
+3)excute() ----insert,update,delete,create (returns true,false);
+---------------------------------------------------------------------------------------------
+
+1)Oracle 10xe 
+2)MySql 
+3)MongoDB
+-------------------------------------------------
+Path where you can find the ojdbc14.jar (driver)
+
+C:\oraclexe\app\oracle\product\10.2.0\server\jdbc\lib
+-----------------------------------------------------------------------------
+package JDBC;
+import java.sql.*;
+import java.util.*;
+public class Student 
+{
+public static void main(String[] args)throws Exception
+{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+		Scanner ob=new Scanner(System.in);
+		System.out.println("enter empno,name,address");
+		int empno=ob.nextInt();
+		String name=ob.next();
+		String address=ob.next();
+		PreparedStatement st=con.prepareStatement("insert into marlabsstud values(?,?,?)");
+		st.setInt(1,empno);//1 represent the first ?
+		st.setString(2,name);//2 represent the second ?
+		st.setString(3,address);//3 represenr the third ?
+		st.execute();
+		System.out.println("row inserted");
+}
+}
+---------------------------------------------------------------------------------------------
+Basic of Oracle (SQL)
+---------------------------
+creating table
+-----------------------
+create table marlabsstud(empno number, name varchar2(50),address varchar2(100))
+
+select data from the table 
+------------------------------------------
+select * from marlabsstud;
+
+insert data into table
+-----------------------------
+insert into marlabsstud values(103,'shubham','Bangalore');
+
+update data in the table
+---------------------------------
+update marlabsstud set address='hyderabad' where empno=103;
+
+delete data from the table
+-----------------------------
+delete marlabsstud where empno=103
+
+select empno,name from marlabsstud;
+
+the table will be deleted
+-----------------------------------
+drop table marlabsstud; 
+
+table structure will be present but rows will be deleted
+-------------------------------------------------------------
+truncate table marlabsstud;
+
+add a column phoneno to marlabsstud
+-------------------------------------------
+alter table marlabsstud add phoneno number
+
+how to update phoneno
+--------------------------
+update marlabsstud set phoneno='6543435' where empno=102;
+
+how to drop the column
+---------------------------
+alter table marlabsstud drop column phoneno;
+----------------------------------------------------------------------------------------------------------------------------
+update
+---------------
+package JDBC;
+import java.sql.*;
+import java.util.*;
+public class Student 
+{
+public static void main(String[] args)throws Exception
+{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+		Scanner ob=new Scanner(System.in);
+		System.out.println("enter name,address and empno which you want to update");
+		String name=ob.next();
+		String address=ob.next();
+		int empno=ob.nextInt();
+		PreparedStatement st=con.prepareStatement("update marlabsstud set name=?,address=? where empno=?");
+		st.setString(1,name);
+		st.setString(2,address);
+		st.setInt(3,empno);
+		st.execute();
+		System.out.println("row updated");
+}
+}
+----------------------------------------------------------------------------------------------
+delete
+--------------
+package JDBC;
+import java.sql.*;
+import java.util.*;
+public class Student 
+{
+public static void main(String[] args)throws Exception
+{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+		Scanner ob=new Scanner(System.in);
+		System.out.println("enter empno which you want to delete");
+		int empno=ob.nextInt();
+		PreparedStatement st=con.prepareStatement("delete marlabsstud where empno=?");
+		st.setInt(1,empno);
+		st.execute();
+		System.out.println("row deleted");
+		}
+}
+
+-----------------------------------------------------------------------------------------------------
+package JDBC;
+import java.sql.*;
+import java.util.*;
+public class Student 
+{
+public static void main(String[] args)throws Exception
+{
+	Scanner ob=new Scanner(System.in);
+	System.out.println("enter empno,name,address,DOJ");
+	int empno=ob.nextInt();
+	String name=ob.next();
+	String address=ob.next();
+	String DOJ=ob.next();
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+	/*	PreparedStatement st=con.prepareStatement("create table marlabemp(empno number,name varchar2(30),address varchar2(30),DOJ date)");
+		st.execute();
+		System.out.println("table created");*/
+		PreparedStatement st=con.prepareStatement("insert into marlabemp values(?,?,?,?)");
+		st.setInt(1, empno);
+		st.setString(2,name);
+		st.setString(3,address);
+		st.setString(4,DOJ);
+		st.execute();
+		System.out.println("row inserted");
+		
+		}
+}
+
+---------------------------------------------------------------------------------------------------------------
+wap to use case and switch and perform the task.
+1.insert 2.update 3.delete 4 .display the records.
+------------------------------------------------------------------------------------
+MySql
+-----------------
+To see the databases present
+1)show databases;
+-------------------------------------------
+To create database
+2)create database marlabs
+---------------------------------------------------
+To go into the database
+3)use marlabs;
+----------------------------------------------------
+To delete the database
+4)drop database marlabs;
+-----------------------------------------------------
+To create a table in the database
+5)create table student(studid int,name varchar(30),address varchar(30));
+-------------------------------------------------------------------------
+To insert the row into the table
+6)insert into student values(102,'Trupti','Bangalore');
+-----------------------------------------------------------------------------------
+To update the data 
+7)update student set address='Orissa' where studid=102;
+--------------------------------------------------------------------------------------
+To delete the data
+8)delete from student where studid=101;
+---------------------------------------------------------------------------------
+Program-1
+-------------------
+package JDBC;
+import java.sql.*;
+import java.util.*;
+public class Student 
+{
+public static void main(String[] args)throws Exception
+{
+	Scanner ob=new Scanner(System.in);
+	System.out.println("enter studID,name,address");
+	int studid=ob.nextInt();
+	String name=ob.next();
+	String address=ob.next();
+			Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/marlabs","root","1234");
+		PreparedStatement st=con.prepareStatement("insert into student values(?,?,?)");
+		st.setInt(1, studid);
+		st.setString(2,name);
+		st.setString(3,address);
+		st.execute();
+		System.out.println("row inserted");
+		
+		}
+}
+
+------------------------------------------------------
+*add MySql connector to the build path
+----------------------------------------------------------
+Connecting the database using GUI (servlet/JSP)
+-------------------------------------------------------------------------
+Servlet is a server side programming language.
+There are 2 types of servlet
+1)Generic Servlet(Protocal Independent)
+2)HttpServlet(Protocal dependent)
+-------------------------------------------------------------
+In the servlet we don't have the main()
+
+we have the lifecycle method for Generic Servlet.
+init():- This execute for one time .It is used to create the memory block.
+service() :- This execute for 'n' no of times .It accepts request and gives the response. 
+destroy():-This execute for one time .It is used to delete the  memory block. 
+------------------------------------------------------------------------------------
+we have the lifecycle method for Http Servlet.
+init():- This execute for one time .It is used to create the memory block.
+service()/doGet()/doPost() :- This execute for 'n' no of times .It accepts request and gives the response. 
+destroy():-This execute for one time .It is used to delete the  memory block. 
+------------------------------------------------------------------------------------------------------------
+Example-1
+------------------
+<html>
+<body bgcolor=cyan>
+<h1>Employee Registration Page</h1><hr>
+<form action=StudentData>
+<table>
+<tr><td>Enter StudID<td><input type=text name=t1 placeholder="enter studentID" size=20 required></tr>
+<tr><td>Enter Name<td><input type=text name=t2 placeholder="enter studentName" size=20 required></tr>
+<tr><td>Enter Address<td><input type=text name=t3 placeholder="enter studentAddress" size=20 required></tr>
+<tr><td><td><input type=submit value=Insert name=b1>
+<input type=submit value=Update name=b1>
+<input type=submit value=Delete name=b1>
+<input type=submit value=Select name=b1>
+</tr>
+</table>
+</form>
+</body>
+</html>
+----------------------------------------------------------------------------------------
+import java.io.*;
+import java.sql.*;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+@WebServlet("/StudentData")
+public class StudentData extends GenericServlet 
+{
+public void init()
+{System.out.println("init");}
 
 
+@Override
+public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException 
+{
+res.setContentType("text/html");
+PrintWriter pw=res.getWriter();
+String a=req.getParameter("t1");
+String b=req.getParameter("t2");
+String c=req.getParameter("t3");
+pw.println("The StudentID is :"+a);
+pw.println("<br>");
+pw.println("The Student Name is :"+b);
+pw.println("<br>");
+pw.println("The Student Address is :"+c);
+}
+public void destroy()
+{System.out.println("Destroy");}
+}
+---------------------------------------------------------------------------
+*Add tomcat server
+*Add 2 jar files:- MySql Connector.jar ,Servlet-api.jar
+------------------------------------------------------------------------------------
+package sandip;
+import java.io.*;
+import java.sql.*;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+@WebServlet("/StudentData")
+public class StudentData extends GenericServlet 
+{
+@Override
+public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException 
+{
+	Connection con=null;
+res.setContentType("text/html");
+PrintWriter pw=res.getWriter();
+String a=req.getParameter("t1");
+String b=req.getParameter("t2");
+String c=req.getParameter("t3");
+pw.println("The StudentID is :"+a);
+pw.println("<br>");
+pw.println("The Student Name is :"+b);
+pw.println("<br>");
+pw.println("The Student Address is :"+c);
+try
+{
+	Class.forName("com.mysql.jdbc.Driver");
+	con=DriverManager.getConnection("jdbc:mysql://localhost:3306/marlabs","root","1234");
+	}
+catch(Exception ae)
+{
+	ae.printStackTrace();
+}
+String x=req.getParameter("b1");
+if(x.equals("Insert"))
+{
+	PreparedStatement st;
+	try {
+		st = con.prepareStatement("insert into student values(?,?,?)");
+		st.setInt(1,Integer.parseInt(a));
+	st.setString(2,b);
+	st.setString(3,c);
+	st.execute();
+	System.out.println("row inserted");
+} catch (SQLException e) {
+		
+		e.printStackTrace();
+	}
+}
+}}
+--------------------------------------------------------------------------------------------------------------------
+Jdbc :-
+---------------
+package NewYear2022;
+import java.sql.*;
+public class JDBC1 
+{
+public static void main(String[] args)throws Exception
+{
+	String driverclass="com.mysql.jdbc.Driver";
+	String url="jdbc:mysql://localhost:3306/sandip";
+	String username="root";
+	String password="1234";
+	String sql="insert into student values(109,'shubham','Bangalore')";
+	Class.forName(driverclass);
+	Connection con=DriverManager.getConnection(url,username,password);
+	Statement st=con.createStatement();
+	int count=st.executeUpdate(sql);
+	System.out.println("inserted row = "+count);
+}
+}
+-------------------------------------------------------------------------------------
+Create a Table :-
+-----------------------
+In oracle we have 5 contrains.
+1)primary key:- if we declare a column as primary key we cannot enter a duplicate value and also we cannot keep it null.
 
+2)unique key :- if we declare a column as unique key we cannot enter duplicate value.
 
+3)not null:- if we declare a column as not null we cannot keep the column empty.
 
+4)check :- if we declare a column as check we can restrict the data .
+example:- salary should be greater than 15000.Marks should be greater than 0.
 
+5)Foreign key:- it is to refer another table.
+----------------------------------------------------------------------------------------
 
+number(9,2) :- 9999999.99
+----------------------------------------------------------------
+Example-
+package NewYear2022;
+import java.sql.*;
+public class JDBC1 
+{
+public static void main(String[] args)throws Exception
+{
+	String driverclass="oracle.jdbc.driver.OracleDriver";
+	String url="jdbc:oracle:thin:@localhost:1521:xe";
+	String username="system";
+	String password="1234";
+	String sql="insert into empmarlabs values(101,'shubham','7766554433',19000)";
+	Class.forName(driverclass);
+	Connection con=DriverManager.getConnection(url,username,password);
+	Statement st=con.createStatement();
+	int count=st.executeUpdate(sql);
+	System.out.println("inserted row = "+count);
+}
+}
+--------------------------------------------------------------------------------------------------------
+C:\oraclexe\app\oracle\product\10.2.0\server\jdbc\lib---ojdbc14.jar
+--------------------------------------------------------------------------------------------------------------------------------
+create table studentM(studid int not null auto_increment,name varchar(30) not null,address varchar(30) not null,
+			primary key(studid));
+-----------------------------------------------------------------------------------------------------------------------------------------
+package NewYear2022;
+import java.sql.*;
+import java.util.*;
+public class JDBC1 
+{
+public static void main(String[] args)throws Exception
+{
+	String driverclass="com.mysql.jdbc.Driver";
+	String url="jdbc:mysql://localhost:3306/sandip";
+	String username="root";
+	String password="1234";
+	String sql="insert into studentM values(?,?,?)";
+	Class.forName(driverclass);
+	Connection con=DriverManager.getConnection(url,username,password);
+	PreparedStatement st=con.prepareStatement(sql);
+	Scanner ob=new Scanner(System.in);
+	System.out.println("enter studid,name,address");
+	int studid=ob.nextInt();
+	String name=ob.next();
+	String address=ob.next();
+	st.setInt(1, studid);
+	st.setString(2, name);
+	st.setString(3, address);
+	int count=st.executeUpdate();
+	System.out.println("inserted row = "+count);
+}
+}
+----------------------------------------------------------------------------------------------------------------------------------------------
+create table studentM(studid number not null,name varchar(30) not null,address varchar(30) not null,			primary key(studid));
+-----------------------------------------------------------------------------------------------------------------------------------------
+package NewYear2022;
+import java.sql.*;
+import java.util.*;
+public class JDBC1 
+{
+public static void main(String[] args)throws Exception
+{
+	String driverclass="com.mysql.jdbc.Driver";
+	String url="jdbc:mysql://localhost:3306/sandip";
+	String username="root";
+	String password="1234";
+	String sql="delete from studentM";
+	String sql1="truncate table studentM";
+	Class.forName(driverclass);
+	Connection con=DriverManager.getConnection(url,username,password);
+	PreparedStatement st=null;
+	System.out.println("************************************");
+	System.out.println("MENU");
+	System.out.println("1.DELETE ALL STUDENTS");
+	System.out.println("2.DELETE BY ID");
+	System.out.println("3.DELETE BY NAME");
+	System.out.println("4.DELETE BY ADDRESS");
+	System.out.println("*************************************");
+	Scanner ob=new Scanner(System.in);
+	System.out.println("Enter your Choice");
+	int option=ob.nextInt();
+	switch(option)
+	{
+	case 1:
+		st=con.prepareStatement(sql1);
+		System.out.println("deleted all rows" );
+	break;
+	case 2:
+		sql+=" where studid=?";
+		System.out.println(sql);
+		System.out.println("enter studid");
+		int studid=ob.nextInt();
+		st=con.prepareStatement(sql);
+		st.setInt(1,studid);
+		break;
+	case 3:
+		sql+=" where name=?";
+		System.out.println(sql);
+		System.out.println("enter name");
+		String name=ob.next();
+		st=con.prepareStatement(sql);
+		st.setString(1, name);
+		break;
+	case 4:
+		sql+=" where address=?";
+		System.out.println(sql);
+		System.out.println("enter address");
+		String address=ob.next();
+		st=con.prepareStatement(sql);
+		st.setString(1, address);
+		break;
+	default:
+		System.out.println("sorry wrong option");
+		break;
+	}
+		int count=st.executeUpdate();
+		if(count==0)
+			System.out.println("sorry no rows updated");
+		else
+			System.out.println("Rows updated is :"+count);
+			con.close();
 
+}}
+------------------------------------------------------------------
+display the employees 
+1)select All employees
+2)select employee by ID
+3)select employee by name
+4)update employee by ID
+---------------------------------------------------------------------------
+example:-
+package Connection;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Scanner;
 
+public class EmpData {
+public static void main(String[] args)throws Exception
+{
+String driverclass="com.mysql.cj.jdbc.Driver";
+String url="jdbc:mysql://localhost:3306/Student";
+String username="root";
+String password="Root@1234";
+String sql="Select from Employee";
+String sql1="Select table Employee";
+Class.forName(driverclass);
+Connection con=DriverManager.getConnection(url,username,password);
+PreparedStatement st=null;
+System.out.println("************************************");
+System.out.println("MENU");
+System.out.println("1.Select ALL Employee");
+System.out.println("2.Select BY ID");
+System.out.println("3.Select BY Name");
+System.out.println("4.Select BY salary");
+System.out.println("*************************************");
+Scanner ob=new Scanner(System.in);
+System.out.println("Enter your Choice");
+int option=ob.nextInt();
+switch(option)
+{
+case 1:
+st=con.prepareStatement(sql1);
+System.out.println("Selected all rows" );
+ResultSet rs=st.executeQuery("select* from Employee");
+while(rs.next())
+{
+System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3));
+}
+break;
+case 2:
+sql+=" where Empid=?";
+System.out.println(sql);
+System.out.println("enter Empid");
+int Empid=ob.nextInt();
+st=con.prepareStatement("select * from Employee where Empid=?");
+st.setInt(1,Empid);
+ResultSet rs1=st.executeQuery();
+while(rs1.next())
+{
+System.out.println(rs1.getInt(1)+" "+rs1.getString(2)+" "+rs1.getString(3));
+}
+break;
+case 3:
+sql+=" where name=?";
+System.out.println(sql);
+System.out.println("enter name");
+String name=ob.next();
+st=con.prepareStatement("select * from Employee where name=?");
+st.setString(1, name);
+ResultSet rs2=st.executeQuery();
+while(rs2.next())
+{
+System.out.println(rs2.getInt(1)+" "+rs2.getString(2)+" "+rs2.getString(3));
+}
+break;
+case 4:
+sql+=" where empsalary=?";
+System.out.println(sql);
+System.out.println("enter salary");
+int empsalary=ob.nextInt();
+ob.close();
+st=con.prepareStatement("select * from Employee where empSalary=?");
+st.setInt(1,empsalary);
+ResultSet rs3=st.executeQuery();
+while(rs3.next())
+{
+System.out.println(rs3.getInt(1)+" "+rs3.getString(2)+" "+rs3.getString(3));
+}
+break;
+default:
+System.out.println("sorry wrong option");
+break;
 
-
-
-
+}
+}
+}
+----------------------------------------------------------------------------------------------------------
+oracle
+https://drive.google.com/file/d/0B_8PmSMM3tRdMl9PS1hUMFFEbkk/view?usp=sharing&resourcekey=0-qjqe8sjixyAi8meOXxO_jQ
+---------------------------------------------------------------------------------------------------------------
+MySql + YOG
+-----------------------
+https://drive.google.com/drive/folders/14Ht1eOCBnImEDYLwlw8hS4VY63GsSolM?usp=sharing
+-----------------------------------------------------------------------------------------------------------------------------------------
