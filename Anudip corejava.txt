@@ -3247,6 +3247,22 @@ To update the data
 To delete the data
 8)delete from student where studid=101;
 ---------------------------------------------------------------------------------
+To add a column
+9)alter table student add phy int;
+alter table student add chem int;
+alter table student add bio int;
+alter table student add total int;
+alter table student add avg int;
+----------------------------------------------------------------
+10)update the newly inserted columns
+ update student set phy=78,chem=56,bio=72 where studid=101;
+----------------------------------------------------------------------------------------------------------
+11)find the total
+update student set total=phy+chem+bio where studid=103;
+
+12)to find the average
+update student set avg=total/3 where studid in(101,102,103);
+-----------------------------------------------------------------------------------------------------------------
 Program-1
 -------------------
 package JDBC;
