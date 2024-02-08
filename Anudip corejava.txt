@@ -3269,6 +3269,29 @@ public class FirstJdbc
 {
 public static void main(String[] args) throws Exception
 {
+	Class.forName("com.mysql.cj.jdbc.Driver");//driver is loaded
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/newdatabase","root","1234");
+	Statement st=con.createStatement();
+	//st.execute("create table employee (empid int,name varchar(30),address varchar(30))");
+	//System.out.println("Table created");
+	st.execute("insert into employee values(103,'peter','Bangalore')");
+	System.out.println("row inserted");
+	st.execute("insert into employee values(104,'mohan','Bangalore')");
+	System.out.println("row inserted");
+	
+	st.execute("delete from employee where empid=101");
+	System.out.println("row deleted");
+	
+}
+}
+
+----------------------------------------------------------------------------------------------------------
+package org.saturday;
+import java.sql.*; 
+public class FirstJdbc 
+{
+public static void main(String[] args) throws Exception
+{
 	Class.forName("com.mysql.cj.jdbc.Driver");//to link between java and mysql we require a driver
 	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/anudip","root","1234");
 	Statement st=con.createStatement();
