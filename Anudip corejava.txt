@@ -3259,7 +3259,7 @@ alter table student add avg int;
 ----------------------------------------------------------------------------------------------------------
 11)find the total
 update student set total=phy+chem+bio where studid=103;
-
+update student set total=phy+chem+bio where rollno in(101,102,103);
 12)to find the average
 update student set avg=total/3 where studid in(101,102,103);
 -----------------------------------------------------------------------------------------------------------------
@@ -3717,3 +3717,27 @@ MySql + YOG
 -----------------------
 https://drive.google.com/drive/folders/14Ht1eOCBnImEDYLwlw8hS4VY63GsSolM?usp=sharing
 -----------------------------------------------------------------------------------------------------------------------------------------
+Create a database
+create a table called student
+insert 5 records into the table.
+and display it.
+------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
