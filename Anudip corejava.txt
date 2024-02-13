@@ -3340,6 +3340,30 @@ public static void main(String[] args) throws Exception
 }
 }
 ----------------------------------------------------------
+package org.saturday;
+import java.sql.*; 
+import java.util.*;
+public class FirstJdbc 
+{
+public static void main(String[] args) throws Exception
+{
+	Class.forName("com.mysql.cj.jdbc.Driver");//driver is loaded
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/newdatabase","root","1234");
+	Scanner ob=new Scanner(System.in);
+	System.out.println("Enter empid,name,address");
+	int empid=ob.nextInt();
+	String name=ob.next();
+	String address=ob.next();
+PreparedStatement ps=con.prepareStatement("insert into employee values(?,?,?)");
+ps.setInt(1, empid);
+ps.setString(2, name);
+ps.setString(3, address);
+ps.execute();
+System.out.println("row inserted");
+	}
+}
+-------------------------------------------------------------------------------------------------------------
+
 how to add jar file (driver)
 ----------------------------------------------
 rightclick on project---->properties------>Java Build path--->libraries---->classpath---->add external jar---->search--->apply and close.
