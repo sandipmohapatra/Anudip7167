@@ -3363,6 +3363,51 @@ System.out.println("row inserted");
 	}
 }
 -------------------------------------------------------------------------------------------------------------
+package org.saturday;
+import java.sql.*; 
+import java.util.*;
+public class FirstJdbc 
+{
+public static void main(String[] args) throws Exception
+{
+	Class.forName("com.mysql.cj.jdbc.Driver");//driver is loaded
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/newdatabase","root","1234");
+	Scanner ob=new Scanner(System.in);
+	System.out.println("Enter empid,name,address for modification");
+	int empid=ob.nextInt();
+	String name=ob.next();
+	String address=ob.next();
+PreparedStatement ps=con.prepareStatement("update employee set name=?,address=? where empid=?");
+ps.setString(1, name);
+ps.setString(2, address);
+ps.setInt(3, empid);
+ps.execute();
+System.out.println("row updated");
+	}
+}
+
+-------------------------------------------------------------------------------------
+package org.saturday;
+import java.sql.*; 
+import java.util.*;
+public class FirstJdbc 
+{
+public static void main(String[] args) throws Exception
+{
+	Class.forName("com.mysql.cj.jdbc.Driver");//driver is loaded
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/newdatabase","root","1234");
+	Scanner ob=new Scanner(System.in);
+	System.out.println("Enter empid for deleting");
+	int empid=ob.nextInt();
+	
+PreparedStatement ps=con.prepareStatement("delete from  employee where empid=?");
+ps.setInt(1, empid);
+ps.execute();
+System.out.println("row deleted");
+	}
+}
+
+----------------------------------------------------
 
 how to add jar file (driver)
 ----------------------------------------------
