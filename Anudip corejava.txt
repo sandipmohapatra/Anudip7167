@@ -3081,8 +3081,8 @@ public class Student
 {
 public static void main(String[] args)throws Exception
 {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+		Class.forName("com.mysql.cj.jdbc.Driver");
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/anudip","root","1234");
 		Scanner ob=new Scanner(System.in);
 		System.out.println("enter empno,name,address");
 		int empno=ob.nextInt();
@@ -3150,8 +3150,8 @@ public class Student
 {
 public static void main(String[] args)throws Exception
 {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+		Class.forName("com.mysql.cj.jdbc.Driver");
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/anudip","root","1234");
 		Scanner ob=new Scanner(System.in);
 		System.out.println("enter name,address and empno which you want to update");
 		String name=ob.next();
@@ -3175,8 +3175,8 @@ public class Student
 {
 public static void main(String[] args)throws Exception
 {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+		Class.forName("com.mysql.cj.jdbc.Driver");
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/anudip","root","1234");
 		Scanner ob=new Scanner(System.in);
 		System.out.println("enter empno which you want to delete");
 		int empno=ob.nextInt();
@@ -3201,8 +3201,8 @@ public static void main(String[] args)throws Exception
 	String name=ob.next();
 	String address=ob.next();
 	String DOJ=ob.next();
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+		Class.forName("com.mysql.cj.jdbc.Driver");
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/anudip","root","1234");
 	/*	PreparedStatement st=con.prepareStatement("create table marlabemp(empno number,name varchar2(30),address varchar2(30),DOJ date)");
 		st.execute();
 		System.out.println("table created");*/
@@ -3322,6 +3322,24 @@ public static void main(String[] args) throws Exception
 }
 
 ------------------------------------------------------------------------------------------------------------
+package org.saturday;
+import java.sql.*; 
+public class FirstJdbc 
+{
+public static void main(String[] args) throws Exception
+{
+	Class.forName("com.mysql.cj.jdbc.Driver");//to link between java and mysql we require a driver
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/anudip","root","1234");
+	Statement st=con.createStatement();
+	//st.execute("create table employee (empid int,name varchar(30),address varchar(30))");
+	//System.out.println("Table created");
+	//st.execute("insert into employee values(102,'alam','bangalore')");
+	//System.out.println("row inserted");
+	st.execute("update employee set address='chennei' where empid=101");
+	System.out.println("row updated");
+}
+}
+----------------------------------------------------------
 how to add jar file (driver)
 ----------------------------------------------
 rightclick on project---->properties------>Java Build path--->libraries---->classpath---->add external jar---->search--->apply and close.
@@ -3520,8 +3538,8 @@ public class JDBC1
 {
 public static void main(String[] args)throws Exception
 {
-	String driverclass="oracle.jdbc.driver.OracleDriver";
-	String url="jdbc:oracle:thin:@localhost:1521:xe";
+	String driverclass="com.mysql.jdbc.Driver";
+	String url="jdbc:mysql://localhost:3306/sandip";
 	String username="system";
 	String password="1234";
 	String sql="insert into empmarlabs values(101,'shubham','7766554433',19000)";
