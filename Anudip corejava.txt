@@ -3408,6 +3408,25 @@ System.out.println("row deleted");
 }
 
 ----------------------------------------------------
+package org.saturday;
+import java.sql.*; 
+import java.util.*;
+public class FirstJdbc 
+{
+public static void main(String[] args) throws Exception
+{
+	Class.forName("com.mysql.cj.jdbc.Driver");//driver is loaded
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/newdatabase","root","1234");
+Statement st=con.createStatement();
+ResultSet rs=st.executeQuery("select * from employee");
+while(rs.next())
+{
+	System.out.println(rs.getInt(1)+"  "+rs.getString(2)+" "+rs.getString(3));
+}
+}
+}
+
+---------------------------------------------------------------------------------------------
 
 how to add jar file (driver)
 ----------------------------------------------
