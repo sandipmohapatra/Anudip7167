@@ -3885,7 +3885,7 @@ procedure
 DELIMITER $$
 CREATE PROCEDURE procedureTest()
 BEGIN
-  SELECT prod_name FROM products;
+  SELECT name FROM student2;
 END$$
 DELIMITER ;
 --------------------------------------------------------------------------------------------------------------------
