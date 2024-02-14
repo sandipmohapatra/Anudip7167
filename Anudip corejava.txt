@@ -3936,5 +3936,13 @@ Statement----for static querry
 PreparedStatement----for dynamic  querry
 CallableStatement---for function and procedure
 --------------------------------------------------------------------------------------------------------------------------------------- 
+execute()-----returns a booleon value
+executeUpdate()----return 0 or 1
+executeQuery()-----select query
+--------------------------------------------------------------------------------------
+ResultSet rs--it stored the whole table.
+we have rs.next() which move the pointer to the next record till it reaches the end of the file.
+---------------------------------------------------------------------------------------
+
 
 
