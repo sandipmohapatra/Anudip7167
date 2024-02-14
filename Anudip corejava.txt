@@ -3851,22 +3851,86 @@ create a table called student
 insert 5 records into the table.
 and display it.
 ------------------------------------------------------
+Function 
+------------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE TABLE student2 (Name VARCHAR(100), Math INT,English INT,Science INT,History INT);
+---------------------------------------------------------------------------------------------
 
+INSERT INTO student2 values
+('Raman', 95, 89, 85, 81),
+('Rahul' , 90, 87, 86, 81),
+('Mohit', 90, 85, 86, 81),
+('Saurabh', NULL, NULL, NULL, NULL );
+-----------------------------------------------------------------------------------
+DELIMITER //
+Create Function tbl_Update(S_name Varchar(50), M1 INT, 
+   M2 INT, M3 INT, M4 INT)
+   RETURNS INT
+   DETERMINISTIC
+   BEGIN
+   UPDATE student2 SET Math = M1, English = M2, 
+   Science = M3, History = M4 WHERE Name = S_name;
+   RETURN 1;
+   END //
+DELIMITER ;
 
+------------------------------------------------------------------------------
+Select tbl_update('Saurabh',85,69,75,82);
+-----------------------------------------------------------------------------------
 
+SELECT * from student2;
+--------------------------------------------------------------------------------------------
+procedure
+--------------------
+DELIMITER $$
+CREATE PROCEDURE procedureTest()
+BEGIN
+  SELECT prod_name FROM products;
+END$$
+DELIMITER ;
+--------------------------------------------------------------------------------------------------------------------
+To execute the stored procedure, use the following MySQL statement:
 
+CALL procedureTest() \G
+--------------------------------------------------------------------------------------------
+example-1
+--------------------------
+When you enter your name it will display your DOB.
+----------------------------------------------------------------------------------------------
+DELIMITER $$
+CREATE FUNCTION getDob(emp_name VARCHAR(50)) RETURNS DATE
+DETERMINISTIC
+BEGIN
+declare dateOfBirth DATE;
+select DOB into dateOfBirth from EMP where Name = emp_name;
+return dateOfBirth;
+END$$
+DELIMITER ;
+-------------------------------------------------------------------------
+package org.Friday;
+import java.sql.*;
+public class CallableExample
+ {
+   public static void main(String args[]) throws SQLException {
+      Class.forName("com.mysql.cj.jdbc.Driver");//driver is loaded
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cognizant","root","1234");
 
+      //Preparing a CallableStatement
+      CallableStatement cstmt = con.prepareCall("{? = call getDob(?)}");
 
+      cstmt.registerOutParameter(1, Types.DATE);
+      cstmt.setString(2, "sandip");
+      cstmt.execute();
 
+      System.out.print("Date of birth: "+cstmt.getDate(1));
+   }
+}
+-----------------------------------------------------------------------------------------------------------------------------------
+ create table emp(name varchar(30),dob date,loc varchar(30));
 
+ insert into emp values('sandip','01-07-1980','bangalore');
 
-
-
-
-
-
-
-
+---------------------------------------------------------------------------------------------------------------------------------------
 
 
 
