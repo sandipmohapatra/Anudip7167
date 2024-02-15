@@ -107,7 +107,111 @@ List studList=criteria.list();
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
+First class a POJO class
+---------------------------------
+Product.java
+-----------------------------
+public class Product
+{
+    private int productId;
+    private String proName;
+    private double price;
+	public int getProductId() {
+		return productId;
+	}
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+	public String getProName() {
+		return proName;
+	}
+	public void setProName(String proName) {
+		this.proName = proName;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+    
+}
+-------------------------------------------------------------------------------------------------
+step-2
+--------------
+hibernate.cfg.xml
+-----------------------------------
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+ 
+<hibernate-configuration>
+<session-factory>
+<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+  <property name="connection.url">jdbc:mysql://localhost:3306/sandip</property>
+  <property name="connection.username">root</property>
+  <property name="connection.password">1234</property>
+  <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+<property name="show_sql">true</property>
+<property name="hbm2ddl.auto">update</property>
+ 
+<mapping resource="Product.hbm.xml"></mapping>
+</session-factory>
+</hibernate-configuration>
+--------------------------------------------------------------------------------------------------------------------
+step-3
+-----------------
+Product.hbm.xml
+------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+   <class name="Product" table="product">
+ 
+<id name="productId" column="pid"  />
+<property name="proName" column="pname" length="10"/>
+<property name="price"/>
+ 
+    </class>
+</hibernate-mapping>
+-----------------------------------------------------------------------
+step-4
+----------------
+Logic.java
+-------------------------------------
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+ 
+public class Logic {
+ 
+    public static void main(String[] args)
+    {
+ 
+        Configuration cfg = new Configuration();
+        cfg.configure("hibernate.cfg.xml");
+ 
+        SessionFactory factory = cfg.buildSessionFactory();
+        Session session = factory.openSession();       
+ 
+            Query qry = session.createQuery("delete from Product p where p.productId=?");
+            qry.setParameter(0,102);
+            int res = qry.executeUpdate();
+ 
+            System.out.println("Command successfully executed....");
+            System.out.println("Numer of records effected due to delete query"+res);
+ 
+        session.close();
+        factory.close();
+    }
+ 
+}
 
+//create table product(pid number,pname varchar2(30),price number);
+---------------------------------------------------------------------------------------------------------------------
 
 
 
