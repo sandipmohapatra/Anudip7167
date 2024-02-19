@@ -105,47 +105,83 @@ List studList=criteria.list();
 •	Criteria is interface used to build the query.
 •	Criterian is interface used for condition.
 
-
------------------------------------------------------------Hibernate Example--------------------------------------------------------------------------------------
-First class a POJO class
----------------------------------
-Product.java
------------------------------
-public class Product
+------------------------------------------------------------Hibernate Example-1-----------------------------------------------------------------------------------
+mypojo.java
+-------------------------
+public class mypojo
 {
-    private int productId;
-    private String proName;
-    private double price;
-	public int getProductId() {
-		return productId;
+	String rollno,name,address;
+
+	public String getRollno() {
+		return rollno;
 	}
-	public void setProductId(int productId) {
-		this.productId = productId;
+
+	public void setRollno(String rollno) {
+		this.rollno = rollno;
 	}
-	public String getProName() {
-		return proName;
+
+	public String getName() {
+		return name;
 	}
-	public void setProName(String proName) {
-		this.proName = proName;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public double getPrice() {
-		return price;
+
+	public String getAddress() {
+		return address;
 	}
-	public void setPrice(double price) {
-		this.price = price;
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
-    
+	
 }
--------------------------------------------------------------------------------------------------
-step-2
---------------
-hibernate.cfg.xml
------------------------------------
-<?xml version='1.0' encoding='UTF-8'?>
+--------------------------------------------------------------------------------------------------------
+part.java
+-------------------
+import java.util.*;
+
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+
+public class part
+{
+	public static void main(String args[])throws Exception
+	{
+		Configuration cfg=new Configuration();
+		SessionFactory sf=cfg.configure().buildSessionFactory();
+		Session ss=sf.openSession();
+		mypojo pojo=new mypojo();
+		Transaction tx=ss.beginTransaction();
+		Query q=ss.createQuery("from mypojo");
+		List stud=q.list();
+		Iterator it=stud.iterator();
+		while(it.hasNext())
+		{
+			pojo=(mypojo)it.next();
+			System.out.println(pojo.getRollno());
+			System.out.println(pojo.getName());
+			System.out.println(pojo.getAddress());
+		}
+		
+	}
+}
+
+
+
+/*
+ * create table details1(phoneno varchar(30),email varchar(30),password  varchar(30));
+ * 
+ * insert into details1 values('99887766','sandip@gmail.com','1234')
+ * 
+ *
+ */
+----------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
-"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"-//hibernate/hibernateconfigurationdtd3.0//en"
 "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
- 
 <hibernate-configuration>
 <session-factory>
 <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -153,83 +189,199 @@ hibernate.cfg.xml
   <property name="connection.username">root</property>
   <property name="connection.password">1234</property>
   <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-<property name="show_sql">true</property>
-<property name="hbm2ddl.auto">update</property>
- 
-<mapping resource="Product.hbm.xml"></mapping>
+<property name="hibernate.hbm2ddl.auto">update</property>
+<property name="show-sql">true</property>
+<mapping resource="student1.hbm.xml"></mapping>
 </session-factory>
 </hibernate-configuration>
---------------------------------------------------------------------------------------------------------------------
-step-3
------------------
-Product.hbm.xml
-------------------------------------------------------------
+------------------------------------------------------------------------------------------
+student1.hbm.xml
+---------------------------------------
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC
-"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"-//hibernate/hibernatemappingdtd3.0//en"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
- 
 <hibernate-mapping>
-   <class name="Product" table="product">
- 
-<id name="productId" column="pid"  />
-<property name="proName" column="pname" length="10"/>
-<property name="price"/>
- 
-    </class>
+<class name="mypojo" table="details">
+<id name="rollno" type="string" column="rollno">
+<generator class="assigned"></generator>
+</id>
+<property name="name" type="string" column="name"></property>
+<property name="address" column="address" type="string"></property>
+</class>
 </hibernate-mapping>
------------------------------------------------------------------------
-step-4
-----------------
-Logic.java
--------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+-----------------------------------------------------------Hibernate Example-2 -----------------------------------------------------------------------------------
+First class a POJO class
+---------------------------------
+mypojo.java
+-------------------------------
+public class mypojo
+{
+	String rollno,name,address;
+
+	public String getRollno() {
+		return rollno;
+	}
+
+	public void setRollno(String rollno) {
+		this.rollno = rollno;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+}
+------------------------------------------------------------------------------------
+mypojo1.java
+-------------------------
+public class mypojo1
+{
+	String phoneno,email,password;
+
+	public String getPhoneno() {
+		return phoneno;
+	}
+
+	public void setPhoneno(String phoneno) {
+		this.phoneno = phoneno;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+		
+}
+---------------------------------------------------------------------------------------------------- 
+part.java
+----------------------
+import java.util.*;
+
 import org.hibernate.*;
 import org.hibernate.cfg.*;
- 
-public class Logic {
- 
-    public static void main(String[] args)
-    {
- 
-        Configuration cfg = new Configuration();
-        cfg.configure("hibernate.cfg.xml");
- 
-        SessionFactory factory = cfg.buildSessionFactory();
-        Session session = factory.openSession();       
- 
-            Query qry = session.createQuery("delete from Product p where p.productId=?");
-            qry.setParameter(0,102);
-            int res = qry.executeUpdate();
- 
-            System.out.println("Command successfully executed....");
-            System.out.println("Numer of records effected due to delete query"+res);
- 
-        session.close();
-        factory.close();
-    }
- 
+
+public class part
+{
+	public static void main(String args[])throws Exception
+	{
+		Configuration cfg=new Configuration();
+		SessionFactory sf=cfg.configure().buildSessionFactory();
+		Session ss=sf.openSession();
+		mypojo pojo=new mypojo();
+		mypojo1 pojo1=new mypojo1();
+		Transaction tx=ss.beginTransaction();
+		Query q=ss.createQuery("from mypojo");
+		List stud=q.list();
+		Iterator it=stud.iterator();
+		while(it.hasNext())
+		{
+			pojo=(mypojo)it.next();
+			System.out.println(pojo.getRollno());
+			System.out.println(pojo.getName());
+			System.out.println(pojo.getAddress());
+		}
+		Query q1=ss.createQuery("from mypojo1");
+		List stud1=q1.list();
+		Iterator it1=stud1.iterator();
+		while(it1.hasNext())
+		{
+			pojo1=(mypojo1)it1.next();
+			System.out.println(pojo1.getPhoneno());
+			System.out.println(pojo1.getEmail());
+			System.out.println(pojo1.getPassword());
+		}
+	}
 }
 
-//create table product(pid number,pname varchar2(30),price number);
+
+
+/*
+ * create table details1(phoneno varchar(30),email varchar(30),password  varchar(30));
+ * 
+ * insert into details1 values('99887766','sandip@gmail.com','1234')
+ * 
+ * create table details(rollno varchar(30),name varchar(30),address  varchar(30));
+ * 
+ * insert into details values('101','sandip','bangalore')
+ */
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//hibernate/hibernateconfigurationdtd3.0//en"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+  <property name="connection.url">jdbc:mysql://localhost:3306/sandip</property>
+  <property name="connection.username">root</property>
+  <property name="connection.password">1234</property>
+  <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+<property name="hibernate.hbm2ddl.auto">update</property>
+<property name="hibernate.hbm2ddl.auto">update</property>
+<property name="show-sql">true</property>
+<mapping resource="student1.hbm.xml"></mapping>
+<mapping resource="student2.hbm.xml"></mapping>
+</session-factory>
+</hibernate-configuration>
+----------------------------------------------------------------------------------------------------------------------------------
+student1.hbm.xml
+-----------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//hibernate/hibernatemappingdtd3.0//en"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="mypojo" table="details">
+<id name="rollno" type="string" column="rollno">
+<generator class="assigned"></generator>
+</id>
+<property name="name" type="string" column="name"></property>
+<property name="address" column="address" type="string"></property>
+</class>
+</hibernate-mapping>
+-------------------------------------------------------------------------------------------------------------------
+student1.hbm.xml
+--------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//hibernate/hibernatemappingdtd3.0//en"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="mypojo1" table="details1">
+<id name="phoneno" type="string" column="phoneno">
+<generator class="assigned"></generator>
+</id>
+<property name="email" type="string" column="email"></property>
+<property name="password" column="password" type="string"></property>
+</class>
+</hibernate-mapping>
 ---------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
