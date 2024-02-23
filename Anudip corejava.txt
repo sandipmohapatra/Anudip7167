@@ -3943,6 +3943,198 @@ executeQuery()-----select query
 ResultSet rs--it stored the whole table.
 we have rs.next() which move the pointer to the next record till it reaches the end of the file.
 ---------------------------------------------------------------------------------------
+Thread:-It is a sort of execution of instruction.
 
+Single Thread Program:- Till now we were doing single threaded programing the program start execution from the main() till the end.
+------------------------------------------------------------------------------------------------
+Multi Thread Program:-
+Each thread will do some task.
+We can create object of Thread and assign the task.
+In this we will have run() and we will have start() .the start() will call the run().
+For this we can either extends Thread class or implement runnable interface.
+There will be Thread switching .So we will see all the start() exceute at the same time and the output will be a mixture of all the task.
+------------------------------------------------------------------------------------------------------
+Thread lifecycle
+--------------------------
+new born thread
+start
+runnable(choose the thread)
+running
+block/wait/sleep
+dead(excution is completed)
+------------------------------------------------------------------------------------------------
+Example-58
+----------------------
+package Thread;
+
+public class Thread1 extends Thread 
+{
+	public void run()
+	{
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println("Thread1"+" "+i);
+			try {
+				sleep(1000);//interrupts the flow of control 
+			} catch (InterruptedException e) {
+							e.printStackTrace();
+			}
+		}
+	}
+}
+-------------------------------------------------------------------------
+package Thread;
+
+public class MainThread
+{
+public static void main(String[] args)
+{
+	Thread1 ob=new Thread1();
+	Thread2 ob1=new Thread2();
+	Thread3 ob2=new Thread3();
+	ob.start(); //start will call the run().At-a-Time all the run() will start excuting concurrently.
+	ob1.start();
+	ob2.start();
+}
+}
+----------------------------------------------------------------------------
+Methods in Thread class
+----------------------------------------
+1)getName() :- It gets the name of Thread.
+
+2)isAlive() :- It check if the Thread is still running or completed it's execution.It returns boolean value.
+
+3)run():- Entry point for the thread.
+
+4)start():- It Starts a thread by calling the run().
+
+5)sleep():- In this based on the requirement we can make a thread sleep or wait for a specific time period.
+
+6)setPriority():- we can set the thead priority.
+
+7)getPriority():- we can get the thread priority.
+
+8)MIN_PRIORITY= range (1 to 4)
+NORM_PRIORITY= 5
+MAX_PRIORITY=RANGE(6 to 10)
+
+9)Daemon Thread :- It is a low priority thread which runs in the background doing garbage collection operation.
+
+10)wait() :- The thread will go to wait until some other thread doesnot notify.
+
+11)notify():- Wake up a thread which is in waiting state.
+
+12)notifyAll() :- This will wake up all the waiting threads.
+
+----------------------------------------------------------------------------------
+Example-59
+---------------------
+package Thread;
+
+public class Thread4 extends Thread
+{
+public void run()
+{
+	for(int i=1;i<=10;i++)
+	{
+		System.out.println(Thread.currentThread().getName()+" "+i);
+		try {
+			sleep(1000);
+		} catch (InterruptedException e) {
+						e.printStackTrace();
+		}
+	}
+
+}
+public static void main(String[] args) 
+{
+	Thread4 ob1=new Thread4();
+	Thread4 ob2=new Thread4();
+	Thread4 ob3=new Thread4();
+	System.out.println(ob1.isAlive());
+	ob1.start();
+	System.out.println(ob1.isAlive());
+	ob2.start();
+	ob3.start();
+}
+}
+-----------------------------------------------------------------
+Example-60
+----------------------
+package Thread;
+public class Thread5 implements Runnable
+{
+	@Override
+	public void run() {
+		
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println(Thread.currentThread().getName()+" "+i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+							e.printStackTrace();
+			}
+	}
+	}
+	public static void main(String[] args) 
+	{
+		Thread5 ob=new Thread5();
+		Thread obj1=new Thread(ob,"Shubham");
+		Thread obj2=new Thread(ob,"Madhu");
+		Thread obj3=new Thread(ob,"Shilpa");
+		obj1.start();obj2.start();obj3.start();
+	}
+}
+---------------------------------------------------------------
+Example-61
+------------------------
+package Thread;
+public class Thread5 implements Runnable
+{
+	@Override
+	synchronized public void run() {
+		try {
+		String name=Thread.currentThread().getName();
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println(name+"  "+i);
+			Thread.sleep(1000);
+			if(name.equals("Shubham") && (i==4))
+			{
+				wait();
+			}
+			if(name.equals("Madhu") && (i==4))
+			{
+				wait();
+			}
+			if(name.equals("Shilpa") && (i==6))
+			{
+				notifyAll(); //wakeup all waiting Thread
+			}
+			
+			  if(name.equals("Shubham") && (i==9))
+			  { notify(); //wakeup 1 thread
+			
+			  }
+			 
+		}}
+		catch(Exception ae)
+		{
+			ae.printStackTrace();
+		}
+				
+	}
+	
+	public static void main(String[] args) 
+	{
+		Thread5 ob=new Thread5();
+		Thread obj1=new Thread(ob,"Shubham");
+		Thread obj2=new Thread(ob,"Madhu");
+		Thread obj3=new Thread(ob,"Shilpa");
+		obj1.start();obj2.start();obj3.start();
+	}
+}
+-------------------------------------------------------------------------------------
 
 
