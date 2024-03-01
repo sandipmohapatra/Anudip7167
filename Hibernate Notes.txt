@@ -385,3 +385,114 @@ student1.hbm.xml
 </class>
 </hibernate-mapping>
 ---------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
+In hibernate we have 4 types of mapping
+---------------------------------------------------------------------------
+1)one-to-one relation ship (one employee has one address)
+one student has one email address
+i)two pojo classes---employee,address
+ii)two hbm.xml ---employee.hbm.xml,address.hbm.xml
+iii)one main file
+iv)one configuration file.
+total of 6 files.
+-------------------------------------------------------------------------------
+2)one-to-many relationship (one question asnwered by multiple students)
+one teacher has multiple students
+i)two pojo classes---teacher,student
+ii)two hbm.xml ---teacher.hbm.xml,student.hbm.xml
+iii)one main file
+iv)one configuration file.
+total of 6 files.
+----------------------------------------------------------------------------------------
+3)many-to-one relationship (many employee having one address)
+i)two pojo classes---employee,address
+ii)two hbm.xml ---employee.hbm.xml,address.hbm.xml
+iii)one main file
+iv)one configuration file.
+total of 6 files.
+-------------------------------------------------------------------------------------------------
+4)many-to-many relationship (Question.java and Answer.java. Question class contains Answer class reference and vice versa.)
+i)two pojo classes---question,answer
+ii)two hbm.xml ---question.hbm.xml,answer.hbm.xml
+iii)one main file
+iv)one configuration file.
+total of 6 files.
+--------------------------------------------------------------------------------------------------------------
+*in case of anotation the .hbm.xml files will be removed
+------------------------------------------------------------------------------------
+student.java
+-------------------------------
+public class mypojo
+{
+	String rollno,name,address;
+
+	public String getRollno() {
+		return rollno;
+	}
+
+	public void setRollno(String rollno) {
+		this.rollno = rollno;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+}
+
+-------------------------------------------------------------------------------------------------
+anotation based there will no .hbm file
+-----------------------------------------------------------------
+import javax.persistence.*;  
+import java.util.List;    
+  
+@Entity  
+@Table(name="student")  
+public class Student
+ {    
+@Id   <-----primary key
+@GeneratedValue(strategy=GenerationType.TABLE)  
+@Column (name="id")
+private int id;    
+@Column (name="sname")
+private String studname;   
+@Column (name="address")
+private String address;  
+public int getId() {  
+    return id;  
+}  
+public void setId(int id) {  
+    this.id = id;  
+}  
+public String getStudname() {  
+    return studname;  
+}  
+public void setStudname(String studname) {  
+    this.studname = studname;  
+}  
+public String getAddress() {  
+    return Address;  
+}  
+public void setAddress(String address) {  
+    this.address = address;  
+}  
+}  
+------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
