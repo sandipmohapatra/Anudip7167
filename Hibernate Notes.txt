@@ -112,8 +112,8 @@ Mapping in Hibernate involves defining how the fields and properties of a Java c
 XML Mapping:
 Hibernate allows you to define the mapping between Java objects and database tables using XML configuration files. In the XML mapping file, you specify the class attributes, relationships, and how they map to the corresponding database table columns. Here's a simplified example:
 
-xml
-Copy code
+hibernate.hbm.xml
+------------------------------------------------------------
 <!-- Hibernate XML mapping file -->
 <hibernate-mapping>
     <class name="com.example.Employee" table="employee">
@@ -129,8 +129,8 @@ Copy code
 Annotation Mapping:
 With the release of Java 5 and later versions, Hibernate introduced annotations as an alternative to XML mapping. Annotations are metadata that you can embed directly in your Java classes to define the mapping. Here's an example:
 
-java
-Copy code
+employee.java
+----------------------------------------
 @Entity
 @Table(name = "employee")
 public class Employee {
