@@ -104,6 +104,49 @@ Criteria.add(crit3);
 List studList=criteria.list();
 •	Criteria is interface used to build the query.
 •	Criterian is interface used for condition.
+----------------------------------------------------------------------------------------------------------------
+In Hibernate, mapping refers to the process of establishing a relationship between Java objects and database tables. Hibernate is an Object-Relational Mapping (ORM) framework that simplifies database interactions by allowing developers to work with Java objects instead of SQL queries directly.
+
+Mapping in Hibernate involves defining how the fields and properties of a Java class correspond to the columns in a database table. This mapping is typically done through XML files or annotations in the source code. There are two main types of mappings in Hibernate:
+
+XML Mapping:
+Hibernate allows you to define the mapping between Java objects and database tables using XML configuration files. In the XML mapping file, you specify the class attributes, relationships, and how they map to the corresponding database table columns. Here's a simplified example:
+
+xml
+Copy code
+<!-- Hibernate XML mapping file -->
+<hibernate-mapping>
+    <class name="com.example.Employee" table="employee">
+        <id name="id" type="long">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="employee_name" type="string"/>
+        <property name="salary" column="employee_salary" type="double"/>
+        <!-- Other mappings and relationships -->
+    </class>
+</hibernate-mapping>
+-----------------------------------------------------------------------------------------------------------------------------
+Annotation Mapping:
+With the release of Java 5 and later versions, Hibernate introduced annotations as an alternative to XML mapping. Annotations are metadata that you can embed directly in your Java classes to define the mapping. Here's an example:
+
+java
+Copy code
+@Entity
+@Table(name = "employee")
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "employee_name")
+    private String name;
+
+    @Column(name = "employee_salary")
+    private double salary;
+
+    // Other fields, relationships, and methods
+}
+Mapping in Hibernate allows developers to seamlessly interact with the database using Java objects, reducing the need for manual SQL queries and providing a more object-oriented approach to data persistence. It also enables Hibernate to handle the translation between the object-oriented model and the relational database model.
 
 ------------------------------------------------------------Hibernate Example-1-----------------------------------------------------------------------------------
 mypojo.java
