@@ -429,7 +429,7 @@ student1.hbm.xml
 </hibernate-mapping>
 ---------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------
-In hibernate we have 4 types of mapping
+In hibernate we have 4 types of Relations
 ---------------------------------------------------------------------------
 1)one-to-one relation ship (one employee has one address)
 one student has one email address
