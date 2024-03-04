@@ -533,7 +533,9 @@ public void setAddress(String address) {
 }  
 }  
 ------------------------------------------------------------------------------------------------------------------------------
-
+Hibernate Interview
+-----------------------------------
+https://www.javatpoint.com/hibernate-interview-questions
 
 
 
