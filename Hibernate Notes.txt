@@ -537,7 +537,7 @@ Hibernate Interview
 -----------------------------------
 https://www.javatpoint.com/hibernate-interview-questions
 ----------------------------------------------------------------------------------------------------------------------------------
-HibernateProject
+HibernateProject crud operation(create,read,update,delete)
 -------------------------------
 person.java(pojo class)--getter,setter,constrctor,toString()
 ------------------------------------------------------------------------------------
@@ -631,5 +631,254 @@ person.hbm.xml(mapping)
 	</class>
 </hibernate-mapping>
 ----------------------------------------------------------------------------------------------------------------------------
+inserting the data
+------------------------------------------------------
+package co.vinod.mait.programs;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import co.vinod.mait.entity.Person;
+import co.vinod.mait.util.HibernateUtil;
+import co.vinod.mait.util.KeyboardUtil;
+
+public class P02_AddNewPerson {
+
+	public static void main(String[] args) {
+
+		int id;
+		String fname, lname, phone, email;
+
+		id = KeyboardUtil.getInt("Enter id: ");
+		fname = KeyboardUtil.getString("Enter firstname: ");
+		lname = KeyboardUtil.getString("Enter lastname: ");
+		phone = KeyboardUtil.getString("Enter phone: ");
+		email = KeyboardUtil.getString("Enter email: ");
+
+		Person p1 = new Person(id, fname, lname, phone, email); //using constractor we are storing the data
+		
+		
+		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			session.save(p1); //save the object into the database
+			tx.commit();
+			System.out.println("Data saved to db.");
+		} catch (HibernateException e) {
+			tx.rollback();
+			System.out.println("There was an error while trying to save data.");
+			System.out.println(e.getMessage());
+		}
+		
+		session.close();
+		
+
+	}
+}
+--------------------------------------------------------------------------------------------------------
+retriving single data
+---------------------------------------------
+package co.vinod.mait.programs;
+
+import org.hibernate.Session;
+
+import co.vinod.mait.entity.Person;
+import co.vinod.mait.util.HibernateUtil;
+
+public class P01_GetOnePerson {
+
+	public static void main(String[] args) {
+		Session session = HibernateUtil.getSession();
+
+		int id = 101;
+		Person p1 = (Person) session.get(Person.class, id);
+
+		if (p1 == null) {
+			System.out.println("No data found!");
+		} else {
+			System.out.println("Name  = " + p1.getFirstName() + " "
+					+ p1.getLastName());
+			System.out.println("Phone = " + p1.getPhone());
+			System.out.println("Email = " + p1.getEmail());
+		}
+
+	}
+
+}
+---------------------------------------------------------------------------------------------
+update the data
+------------------------
+package co.vinod.mait.programs;
+
+import org.hibernate.Session;
+
+import co.vinod.mait.entity.Person;
+import co.vinod.mait.util.HibernateUtil;
+import co.vinod.mait.util.KeyboardUtil;
+
+public class P04_UpdatePersonData {
+
+	public static void main(String[] args) {
+		Session session = HibernateUtil.getSession();
+		int id = KeyboardUtil.getInt("Enter id: ");
+		session.beginTransaction();
+		Person p1 = (Person) session.get(Person.class, id);
+
+		if (p1 == null) {
+			System.out.println("No data found!");
+		} else {
+			String input;
+
+			input = KeyboardUtil.getString("First name : (" + p1.getFirstName() + ") ");
+			if (!input.equals("")) {
+				p1.setFirstName(input);
+			}
+
+			input = KeyboardUtil.getString("Last name : (" + p1.getLastName() + ") ");
+			if (!input.equals("")) {
+				p1.setLastName(input);
+			}
+
+			input = KeyboardUtil.getString("Phone : (" + p1.getPhone() + ") ");
+			if (!input.equals("")) {
+				p1.setPhone(input);
+			}
+
+			input = KeyboardUtil.getString("Email : (" + p1.getEmail() + ") ");
+			if (!input.equals("")) {
+				p1.setEmail(input);
+			}
+
+			session.getTransaction().commit();
+			System.out.println("Data updated back to the db.");
+
+		}
+
+	}
+}
+----------------------------------------------------------------------------------------------
+deleting the records
+--------------------------------------
+package co.vinod.mait.programs;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+
+import co.vinod.mait.entity.Person;
+import co.vinod.mait.util.HibernateUtil;
+import co.vinod.mait.util.KeyboardUtil;
+
+public class P03_DeletePerson {
+
+	public static void main(String[] args) {
+
+		int id = KeyboardUtil.getInt("Enter id of the person to delete: ");
+
+		Session session = HibernateUtil.getSession();
+		session.beginTransaction();
+		try {
+			Person p1 = (Person) session.get(Person.class, id);
+			if (p1 == null) {
+				System.out.println("No record to delete!");
+			} else {
+				session.delete(p1);
+				session.getTransaction().commit();
+				System.out.println("Data deleted successfully!");
+			}
+		} catch (HibernateException e) {
+			System.out.println("Could not delete the data");
+			System.err.println(e.getMessage());
+			session.getTransaction().rollback();
+		}
+
+		session.close();
+
+	}
+}
+-----------------------------------------------------------------------------------
+package co.vinod.mait.util;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class HibernateUtil {
+
+	public static Session getSession() {
+		// empty configuration object
+		Configuration cfg = new Configuration();
+		// read the hibernate.cfg.xml
+		cfg.configure();
+		// obtain a session-factory object
+		SessionFactory factory = cfg.buildSessionFactory();
+		// get a new session 
+		return factory.openSession();
+	}
+
+}
+--------------------------------------------------------------------------------
+package co.vinod.mait.util;
+
+import java.util.Scanner;
+
+@SuppressWarnings("resource")
+public class KeyboardUtil {
+
+	public static String getString(String message) {
+		System.out.print(message);
+		Scanner scanner = new Scanner(System.in);
+		return scanner.nextLine();
+	}
+
+	public static int getInt(String message) {
+		System.out.print(message);
+		Scanner scanner = new Scanner(System.in);
+		return scanner.nextInt();
+	}
+
+	public static double getDouble(String message) {
+		System.out.print(message);
+		Scanner scanner = new Scanner(System.in);
+		return scanner.nextDouble();
+	}
+}
+-----------------------------------------------------------------------------------
+hibernate.cfg.xml
+-------------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//hibernate/hibernateconfigurationdtd3.0//en"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+  <property name="connection.url">jdbc:mysql://localhost:3306/sandip</property>
+  <property name="connection.username">root</property>
+  <property name="connection.password">1234</property>
+  <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+<property name="hibernate.hbm2ddl.auto">update</property>
+<property name="show-sql">true</property>
+
+		<mapping resource="co/vinod/mait/entity/person.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
+--------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
