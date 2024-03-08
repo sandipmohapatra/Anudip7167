@@ -536,8 +536,100 @@ public void setAddress(String address) {
 Hibernate Interview
 -----------------------------------
 https://www.javatpoint.com/hibernate-interview-questions
+----------------------------------------------------------------------------------------------------------------------------------
+HibernateProject
+-------------------------------
+person.java(pojo class)--getter,setter,constrctor,toString()
+------------------------------------------------------------------------------------
+package co.vinod.mait.entity;
 
+public class Person {
 
+	private int id;
+	private String firstName;
+	private String lastName;
+	private String phone;
+	private String email;
 
+	public Person() {
+	}
+
+	public Person(int id, String firstName, String lastName, String phone,
+			String email) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phone = phone;
+		this.email = email;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [id=" + id + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", phone=" + phone + ", email=" + email + "]";
+	}
+
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+person.hbm.xml(mapping)
+------------------------------------------------------
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="co.vinod.mait.entity">
+	
+	<!-- class to table mapping -->
+	<class name="Person" table="persons">
+
+		<id name="id" column="id" />
+		<property name="firstName" column="first_name" />
+		<property name="lastName" column="last_name" />
+		<property name="phone" column="phone" />
+		<property name="email" column="email" />
+	</class>
+</hibernate-mapping>
+----------------------------------------------------------------------------------------------------------------------------
 
 
